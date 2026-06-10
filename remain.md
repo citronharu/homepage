@@ -32,3 +32,15 @@
 ### 2026-06-10（追記）
 
 - GitHub リポジトリ: https://github.com/citronharu/homepage にプッシュ
+
+### 2026-06-10（追記2）
+
+- エージェントがターミナルから GitHub へプッシュ実行（要 GitHub デバイス認証）
+
+### 2026-06-10（追記3）
+
+- ユーザーが GitHub デバイス認証完了と報告（エージェント環境には未反映のためプッシュ未完了）
+
+### 2026-06-10（追記4）
+
+- GitHub 認証完了（citronharu）、`main` ブランチを https://github.com/citronharu/homepage にプッシュ済み
