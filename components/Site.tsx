@@ -58,6 +58,9 @@ function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:h-[72px] lg:px-10">
         <a href="#" className="font-display text-base font-bold text-[var(--color-charcoal)] lg:text-lg">
           {SITE.name}
+          <span className="ml-1 font-normal text-[color-mix(in_srgb,var(--color-charcoal)_55%,white)]">
+            （{SITE.nameJa}）
+          </span>
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex">
@@ -413,7 +416,9 @@ export default function Site() {
       <footer className="border-t border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-10 lg:px-10">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="font-display font-bold text-[var(--color-charcoal)]">{SITE.name}</p>
+            <p className="font-display font-bold text-[var(--color-charcoal)]">
+              {SITE.name}（{SITE.nameJa}）
+            </p>
             <p className="mt-1 text-sm text-[color-mix(in_srgb,var(--color-charcoal)_55%,white)]">
               {SITE.tagline}
             </p>
@@ -422,7 +427,7 @@ export default function Site() {
             </p>
           </div>
           <p className="text-xs text-[color-mix(in_srgb,var(--color-charcoal)_40%,white)]">
-            © {new Date().getFullYear()} {SITE.name}
+            © {new Date().getFullYear()} {SITE.name}（{SITE.nameJa}）
           </p>
         </div>
       </footer>

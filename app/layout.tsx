@@ -24,9 +24,9 @@ const mPlus1Code = M_PLUS_1_Code({
 });
 
 export const metadata: Metadata = {
-  title: "松尾制作事務所 | Webサイト・社内システムの設計・開発",
+  title: "Ottorino（オットリーノ） | Webサイト・社内システムの設計・開発",
   description:
-    "松尾制作事務所は、Webサイト制作から社内システム開発まで。個人事業主としてヒアリングから公開・運用まで伴走します。",
+    "Ottorino（オットリーノ）は、Webサイト制作から社内システム開発まで。個人事業主としてヒアリングから公開・運用まで伴走します。",
 };
 
 export default function RootLayout({

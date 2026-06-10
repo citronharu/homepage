@@ -1,7 +1,8 @@
 export const SITE = {
-  name: "松尾制作事務所",
+  name: "Ottorino",
+  nameJa: "オットリーノ",
   tagline: "Webサイト・社内システムの設計・開発",
-  owner: "個人事業主　松尾",
+  owner: "個人事業主",
   description:
     "Web制作から業務システム開発まで。ヒアリングから設計・開発・公開・運用まで、一人で責任を持って伴走します。",
   email: "hello@example.com",
