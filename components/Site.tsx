@@ -46,7 +46,11 @@ function Hero() {
             {SITE.nameJa}
           </p>
           <h2 className="font-display mt-10 text-[clamp(1.5rem,4vw,2.25rem)] font-bold leading-snug tracking-tight text-[var(--color-charcoal)]">
-            {HERO.jp}
+            {HERO.jpLines.map((line, i) => (
+              <span key={line} className={i > 0 ? "block" : undefined}>
+                {line}
+              </span>
+            ))}
           </h2>
           <p className="mt-6 max-w-[640px] text-base leading-[1.9] text-[color-mix(in_srgb,var(--color-charcoal)_72%,white)]">
             {HERO.sub}

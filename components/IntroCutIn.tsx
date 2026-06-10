@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { LOCATION, LOCATION_IMAGE } from "@/lib/content";
+import { LOCATION_IMAGE, SITE } from "@/lib/content";
 
 type Phase = "checking" | "in" | "hold" | "out" | "done";
 
@@ -91,11 +91,8 @@ export default function IntroCutIn() {
             transition={{ duration: 0.45, ease: CUT_IN_EASE }}
             className="max-w-2xl text-white"
           >
-            <p className="font-mono-accent text-[10px] tracking-[0.25em] text-[var(--color-yellow)] uppercase sm:text-xs">
-              {LOCATION.en} / {LOCATION.ja}
-            </p>
-            <p className="font-display mt-3 text-xl font-bold leading-snug sm:text-2xl">
-              {LOCATION.headline}
+            <p className="font-display text-2xl font-bold leading-snug sm:text-3xl lg:text-4xl">
+              {SITE.name}
             </p>
           </motion.div>
         </div>
