@@ -13,6 +13,7 @@ import {
   SERVICES,
   SITE,
   STEPS,
+  PROCESS_INTRO,
   type CaseFilter,
 } from "@/lib/content";
 
@@ -461,21 +462,42 @@ export default function Site() {
         </section>
 
         <section id="process" className="section-padding bg-process text-white">
-          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <div className="mx-auto max-w-3xl px-6 lg:px-10">
             <Reveal>
               <div className="section-heading">
                 <span className="section-title-en text-[var(--color-yellow)]">Process</span>
                 <h2 className="section-title-ja text-white">制作の流れ</h2>
               </div>
+              <p className="-mt-6 mb-10 text-sm leading-relaxed text-white/70">{PROCESS_INTRO}</p>
             </Reveal>
-            <div className="grid gap-px overflow-hidden rounded-xl border border-white/20 bg-white/10 lg:grid-cols-5">
+            <div className="space-y-5">
               {STEPS.map((step, i) => (
                 <Reveal key={step.num} delay={i * 0.05}>
-                  <div className="bg-[color-mix(in_srgb,var(--color-deep)_90%,black)] p-6 transition-colors hover:bg-[color-mix(in_srgb,var(--color-sky)_30%,var(--color-deep))] lg:p-7">
-                    <span className="font-mono-accent text-lg font-bold text-[var(--color-yellow)]">{step.num}</span>
-                    <h3 className="font-display mt-3 text-sm font-bold">{step.title}</h3>
-                    <p className="mt-2 text-xs leading-relaxed text-white/60">{step.desc}</p>
-                  </div>
+                  <article className="rounded-xl border border-white/20 bg-[color-mix(in_srgb,var(--color-deep)_90%,black)] p-6 transition-colors hover:border-white/30 lg:p-8">
+                    <div className="flex flex-wrap items-start gap-4 sm:gap-6">
+                      <div className="shrink-0">
+                        <span className="font-mono-accent text-2xl font-bold text-[var(--color-yellow)]">
+                          {step.num}
+                        </span>
+                        <p className="mt-2 font-mono-accent text-[10px] tracking-wide text-white/45">
+                          {step.duration}
+                        </p>
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="font-display text-lg font-bold">{step.title}</h3>
+                        <p className="mt-1 text-sm text-white/75">{step.desc}</p>
+                        <p className="mt-4 text-sm leading-[1.85] text-white/60">{step.body}</p>
+                        <ul className="mt-5 space-y-2 border-t border-white/10 pt-5">
+                          {step.items.map((item) => (
+                            <li key={item} className="flex gap-2.5 text-sm leading-relaxed text-white/70">
+                              <span className="shrink-0 text-[var(--color-yellow)]">✓</span>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </article>
                 </Reveal>
               ))}
             </div>
