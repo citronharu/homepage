@@ -161,6 +161,7 @@ export default function Site() {
   const [submitted, setSubmitted] = useState(false);
   const [caseFilter, setCaseFilter] = useState<CaseFilter>("すべて");
   const [expandedCase, setExpandedCase] = useState<string | null>(CASE_STUDIES[0]?.id ?? null);
+  const [expandedService, setExpandedService] = useState<string | null>(null);
 
   const filteredCases =
     caseFilter === "すべて"
@@ -178,28 +179,136 @@ export default function Site() {
           <div className="mx-auto max-w-6xl px-6 lg:px-10">
             <Reveal>
               <SectionLabel en="Service" ja="提供サービス" />
+              <p className="-mt-6 mb-8 max-w-2xl text-sm leading-relaxed text-[color-mix(in_srgb,var(--color-charcoal)_65%,white)]">
+                各サービスをクリックすると、具体的な内容と料金の目安をご覧いただけます。
+              </p>
             </Reveal>
             <div className="grid gap-5 md:grid-cols-2">
               {SERVICES.map((s, i) => (
-                <Reveal key={s.title} delay={i * 0.06}>
-                  <article className="card-gp p-8 lg:p-9">
-                    <span className="font-mono-accent text-sm font-medium text-accent">{s.num}</span>
-                    <h3 className="font-display mt-3 text-lg font-bold text-[var(--color-charcoal)]">
-                      {s.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-[color-mix(in_srgb,var(--color-charcoal)_68%,white)]">
-                      {s.desc}
-                    </p>
-                    <ul className="mt-5 flex flex-wrap gap-2">
-                      {s.tags.map((tag) => (
-                        <li
-                          key={tag}
-                          className="rounded border border-[var(--color-border)] px-2.5 py-0.5 text-[11px] text-brown"
+                <Reveal key={s.id} delay={i * 0.06}>
+                  <article
+                    className={`card-gp overflow-hidden transition ${
+                      expandedService === s.id ? "border-[var(--color-sky)] ring-1 ring-[var(--color-sky)]/25" : ""
+                    }`}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setExpandedService(expandedService === s.id ? null : s.id)}
+                      className="w-full p-8 text-left lg:p-9"
+                      aria-expanded={expandedService === s.id}
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <span className="font-mono-accent text-sm font-medium text-accent">{s.num}</span>
+                        <span
+                          className={`shrink-0 text-xs text-accent transition-transform ${
+                            expandedService === s.id ? "rotate-180" : ""
+                          }`}
                         >
-                          {tag}
-                        </li>
-                      ))}
-                    </ul>
+                          ▼
+                        </span>
+                      </div>
+                      <h3 className="font-display mt-3 text-lg font-bold text-[var(--color-charcoal)]">
+                        {s.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-[color-mix(in_srgb,var(--color-charcoal)_68%,white)]">
+                        {s.desc}
+                      </p>
+                      <ul className="mt-5 flex flex-wrap gap-2">
+                        {s.tags.map((tag) => (
+                          <li
+                            key={tag}
+                            className="rounded border border-[var(--color-border)] px-2.5 py-0.5 text-[11px] text-brown"
+                          >
+                            {tag}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="mt-5 text-xs font-medium text-[var(--color-deep)]">
+                        {expandedService === s.id ? "閉じる" : "詳細・料金を見る"}
+                        <span className="ml-1 font-mono-accent">
+                          {s.pricing.range}
+                        </span>
+                      </p>
+                    </button>
+
+                    {expandedService === s.id && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        className="border-t border-[var(--color-border)] px-8 pb-8 lg:px-9 lg:pb-9"
+                      >
+                        <div className="pt-6">
+                          <h4 className="text-sm font-bold text-[var(--color-charcoal)]">具体的な内容</h4>
+                          <ul className="mt-3 space-y-2">
+                            {s.includes.map((item) => (
+                              <li
+                                key={item}
+                                className="flex gap-2 text-sm text-[color-mix(in_srgb,var(--color-charcoal)_75%,white)]"
+                              >
+                                <span className="shrink-0 text-[var(--color-deep)]">✓</span>
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <div className="mt-6 space-y-4">
+                          {s.details.map((d) => (
+                            <div
+                              key={d.title}
+                              className="rounded-lg bg-[color-mix(in_srgb,var(--color-sky-pale)_80%,white)] p-4"
+                            >
+                              <h4 className="text-sm font-bold text-[var(--color-charcoal)]">{d.title}</h4>
+                              <p className="mt-2 text-sm leading-relaxed text-[color-mix(in_srgb,var(--color-charcoal)_68%,white)]">
+                                {d.body}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="mt-6 rounded-lg border border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-yellow)_8%,white)] p-5">
+                          <div className="flex flex-wrap items-baseline justify-between gap-2">
+                            <h4 className="text-sm font-bold text-[var(--color-charcoal)]">料金の目安</h4>
+                            <p className="font-mono-accent text-xl font-bold text-[var(--color-charcoal)]">
+                              {s.pricing.range}
+                              <span className="ml-1 text-xs font-normal text-[color-mix(in_srgb,var(--color-charcoal)_50%,white)]">
+                                （税込）
+                              </span>
+                            </p>
+                          </div>
+                          <p className="mt-2 text-xs leading-relaxed text-[color-mix(in_srgb,var(--color-charcoal)_60%,white)]">
+                            {s.pricing.note}
+                          </p>
+                          <ul className="mt-4 space-y-2 border-t border-[var(--color-border)] pt-4">
+                            {s.pricing.items.map((item) => (
+                              <li
+                                key={item.label}
+                                className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-sm"
+                              >
+                                <span className="text-[color-mix(in_srgb,var(--color-charcoal)_75%,white)]">
+                                  {item.label}
+                                </span>
+                                <span className="font-medium text-[var(--color-charcoal)]">
+                                  {item.price === "要相談" ? (
+                                    item.price
+                                  ) : (
+                                    <>
+                                      <span className="font-mono-accent">{item.price}</span>
+                                      <span className="ml-2 text-xs text-[color-mix(in_srgb,var(--color-charcoal)_50%,white)]">
+                                        / {item.delivery}
+                                      </span>
+                                    </>
+                                  )}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                          <a href="#contact" className="btn-primary mt-5 inline-flex text-sm">
+                            この内容で相談する
+                          </a>
+                        </div>
+                      </motion.div>
+                    )}
                   </article>
                 </Reveal>
               ))}
