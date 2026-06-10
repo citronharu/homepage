@@ -81,6 +81,9 @@ body {
 }
 
 .hero-fixed-bg {
+  --hero-grid-size: 144px;
+  --hero-grid-line: 2px;
+  --hero-grid-period: 5s;
   position: fixed;
   inset: 0;
   z-index: 0;
@@ -104,94 +107,38 @@ body {
   inset: -20%;
   width: 140%;
   height: 140%;
-  opacity: 1;
-}
-
-.hero-fixed-bg__pattern--a {
   background-image:
     repeating-linear-gradient(
       45deg,
       transparent,
-      transparent 69px,
-      color-mix(in srgb, var(--color-sky) 15%, transparent) 69px,
-      color-mix(in srgb, var(--color-sky) 15%, transparent) 72px
+      transparent calc(var(--hero-grid-size) / 2 - var(--hero-grid-line)),
+      color-mix(in srgb, var(--color-sky) 15%, transparent)
+        calc(var(--hero-grid-size) / 2 - var(--hero-grid-line)),
+      color-mix(in srgb, var(--color-sky) 15%, transparent) calc(var(--hero-grid-size) / 2)
     ),
     repeating-linear-gradient(
       -45deg,
       transparent,
-      transparent 69px,
-      color-mix(in srgb, var(--color-sky) 15%, transparent) 69px,
-      color-mix(in srgb, var(--color-sky) 15%, transparent) 72px
+      transparent calc(var(--hero-grid-size) / 2 - var(--hero-grid-line)),
+      color-mix(in srgb, var(--color-sky) 15%, transparent)
+        calc(var(--hero-grid-size) / 2 - var(--hero-grid-line)),
+      color-mix(in srgb, var(--color-sky) 15%, transparent) calc(var(--hero-grid-size) / 2)
     );
-  background-size: 144px 144px;
-  animation: heroGridFlowLeftA 5s linear infinite;
+  background-size: var(--hero-grid-size) var(--hero-grid-size);
+  animation: heroGridFlow45 var(--hero-grid-period) linear infinite;
 }
 
-.hero-fixed-bg__pattern--b {
-  background-image:
-    repeating-linear-gradient(
-      60deg,
-      transparent,
-      transparent 93px,
-      color-mix(in srgb, var(--color-deep) 8%, transparent) 93px,
-      color-mix(in srgb, var(--color-deep) 8%, transparent) 96px
-    ),
-    repeating-linear-gradient(
-      -60deg,
-      transparent,
-      transparent 93px,
-      color-mix(in srgb, var(--color-deep) 8%, transparent) 93px,
-      color-mix(in srgb, var(--color-deep) 8%, transparent) 96px
-    );
-  background-size: 192px 192px;
-  animation: heroGridFlowLeftB 7.5s linear infinite;
-}
-
-.hero-fixed-bg__pattern--b::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 141px,
-    color-mix(in srgb, var(--color-yellow) 5%, transparent) 141px,
-    color-mix(in srgb, var(--color-yellow) 5%, transparent) 144px
-  );
-  background-size: 288px 288px;
-  animation: heroGridFlowLeftAccent 6s linear infinite;
-}
-
-@keyframes heroGridFlowLeftA {
+@keyframes heroGridFlow45 {
   from {
     background-position: 0 0;
   }
   to {
-    background-position: -144px -144px;
-  }
-}
-
-@keyframes heroGridFlowLeftB {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -192px -192px;
-  }
-}
-
-@keyframes heroGridFlowLeftAccent {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -288px -288px;
+    background-position: calc(-1 * var(--hero-grid-size)) calc(-1 * var(--hero-grid-size));
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-fixed-bg__pattern,
-  .hero-fixed-bg__pattern::after {
+  .hero-fixed-bg__pattern {
     animation: none;
   }
 }
