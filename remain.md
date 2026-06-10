@@ -18,7 +18,7 @@
 | **参考** | [GP Online](https://www.gpol.co.jp)（UI・配色・Hero のみ。構成は維持） / [LIG 記事](https://liginc.co.jp/web/useful/172778) |
 | **GitHub** | https://github.com/citronharu/homepage （`main` ブランチ） |
 | **デプロイ** | Vercel（Framework: Next.js） |
-| **最新コミット** | `0c3c092` — 拠点セクションの説明文を簡潔化 |
+| **最新コミット** | （push 後に更新） |
 
 ### 業務範囲
 
@@ -317,3 +317,26 @@
 ### 2026-06-10 — 拠点セクション文案の更新
 
 - `#location` の説明文を対面・オンライン対応の訴求に簡潔化
+
+### 2026-06-10 — Hero キャッチコピー更新
+
+- 見出し・説明文を Web 制作〜業務効率化の訴求に差し替え
+
+### 2026-06-10 — 制作の流れを左詰めに調整
+
+- `#process` のコンテナを max-w-6xl に拡大し、見出し・本文を左揃えに統一
+
+### 2026-06-10 — 初回表示をページ先頭に固定
+
+- `ScrollToTop` を useLayoutEffect + 二重 rAF で強化
+- `overflow-anchor: none` でスクロール位置のズレを抑制
+- イントロカットイン終了後も先頭へスクロール
+
+### 2026-06-10 — トップ初回カットイン
+
+- 拠点写真（`osaka-location.png`）のフルスクリーンカットインを追加
+- ハッシュ URL・`prefers-reduced-motion` 時はスキップ
+
+### 2026-06-10 — 比較表文案の更新
+
+- 「導入スピード」行の Ottorino 側を専門用語なしの表現に変更

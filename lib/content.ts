@@ -14,8 +14,8 @@ export const SITE = {
 } as const;
 
 export const HERO = {
-  jp: "ITの「難しい」を、「便利」に翻訳します。",
-  sub: "大阪の中小企業の皆様の、一番近い相談役として。マーケティング視点 × デジタル技術で、現場の「面倒な作業」をITで楽にします。",
+  jp: "ホームページ作りから、面倒な作業の自動化（システム化）まで。",
+  sub: "「Webサイトだけ新しくしたい」「社内のシステムだけ作ってほしい」といった単体でのご相談も大歓迎です。ITが苦手な方にも専門用語なしで寄り添い、Web制作から業務効率化まで、現場の「困った」をまるごとサポートします。",
   ctaPrimary: "ご相談はこちら",
   ctaSecondary: "導入事例を見る",
 } as const;
@@ -51,7 +51,7 @@ export const WHY_OTTORINO = {
     {
       topic: "導入スピード",
       general: "要件定義に数ヶ月かかることも",
-      ottorino: "アジャイル開発で素早く導入",
+      ottorino: "小さく始めて、すぐ現場で使える形まで届ける",
     },
     {
       topic: "導入後の定着",
@@ -63,6 +63,8 @@ export const WHY_OTTORINO = {
 
 export const CONTACT_INTRO =
   "ご相談は無料です。「こんなこと、ITで楽になるかな？」という小さな疑問から、まずはお聞かせください。2 営業日以内に丁寧にご返信します。" as const;
+
+export const LOCATION_IMAGE = "/images/osaka-location.png" as const;
 
 export const LOCATION = {
   en: "Location",

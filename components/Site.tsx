@@ -6,6 +6,7 @@ import { useState } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HeroFixedBackground from "@/components/HeroFixedBackground";
+import IntroCutIn from "@/components/IntroCutIn";
 import { Reveal, SectionLabel } from "@/components/Reveal";
 import {
   CASE_FILTERS,
@@ -14,6 +15,7 @@ import {
   FAQS,
   HERO,
   LOCATION,
+  LOCATION_IMAGE,
   PLANS,
   SERVICES,
   SITE,
@@ -79,6 +81,7 @@ export default function Site() {
 
   return (
     <>
+      <IntroCutIn />
       <HeroFixedBackground />
       <Header />
       <main className="relative z-10">
@@ -87,7 +90,7 @@ export default function Site() {
         <section id="location" className="relative overflow-hidden">
           <div className="absolute inset-0" aria-hidden>
             <Image
-              src="/images/osaka-location.png"
+              src={LOCATION_IMAGE}
               alt=""
               fill
               className="object-cover"
@@ -503,10 +506,10 @@ export default function Site() {
           </div>
         </section>
 
-        <section id="process" className="section-padding bg-process text-white">
-          <div className="mx-auto max-w-4xl px-6 lg:px-10">
+        <section id="process" className="section-padding bg-process text-left text-white">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
             <Reveal>
-              <div className="section-heading">
+              <div className="section-heading justify-start">
                 <span className="section-title-en text-[var(--color-yellow)]">Process</span>
                 <h2 className="section-title-ja text-white">制作の流れ</h2>
               </div>
