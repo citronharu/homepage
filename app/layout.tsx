@@ -4,7 +4,7 @@ import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500",  "700"],
   variable: "--font-noto",
   display: "swap",
 });
@@ -17,9 +17,9 @@ const mPlus1Code = M_PLUS_1_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Web制作代行 | 個人事業主",
+  title: "松尾制作事務所 | Webサイト・社内システムの設計・開発",
   description:
-    "個人事業主としてWeb制作代行を請け負っています。LP・コーポレートサイト・リニューアルなど、お気軽にご相談ください。",
+    "松尾制作事務所は、Webサイト制作から社内システム開発まで。個人事業主としてヒアリングから公開・運用まで伴走します。",
 };
 
 export default function RootLayout({

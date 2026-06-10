@@ -6,25 +6,25 @@
   --color-tan: #b8937e;
   --color-orange: #f18210;
   --color-charcoal: #332c2b;
-  --color-surface: rgba(255, 255, 255, 0.72);
-  --color-glass: rgba(255, 255, 255, 0.18);
-  --color-glass-border: rgba(255, 255, 255, 0.28);
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
   color: var(--color-charcoal);
   font-family: var(--font-noto), -apple-system, BlinkMacSystemFont, "SF Pro Text",
     system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  background: #faf9f8;
 }
 
 .font-display {
@@ -36,96 +36,6 @@ body {
   font-family: var(--font-mplus), ui-monospace, monospace;
 }
 
-.glass {
-  background: var(--color-glass);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid var(--color-glass-border);
-}
-
-.glass-dark {
-  background: rgba(51, 44, 43, 0.42);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.wallpaper {
-  background-color: var(--color-mist);
-  background-image:
-    radial-gradient(
-      ellipse 120% 80% at 20% 10%,
-      rgba(185, 204, 211, 0.95) 0%,
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse 90% 70% at 85% 20%,
-      rgba(184, 147, 126, 0.55) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse 100% 90% at 60% 90%,
-      rgba(125, 68, 41, 0.35) 0%,
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse 60% 50% at 10% 80%,
-      rgba(241, 130, 16, 0.18) 0%,
-      transparent 45%
-    ),
-    linear-gradient(
-      145deg,
-      #c8d8de 0%,
-      #b9ccd3 25%,
-      #c4b0a0 55%,
-      #9a6848 80%,
-      #7d4429 100%
-    );
-  background-size: cover;
-  background-position: center;
-}
-
-.window-content {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(125, 68, 41, 0.25) transparent;
-}
-
-.window-content::-webkit-scrollbar {
-  width: 6px;
-}
-
-.window-content::-webkit-scrollbar-thumb {
-  background: rgba(125, 68, 41, 0.25);
-  border-radius: 3px;
-}
-
-.hover-lift {
-  transition:
-    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.25s ease,
-    border-color 0.25s ease,
-    background-color 0.25s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow:
-    0 12px 32px rgba(51, 44, 43, 0.12),
-    0 4px 12px rgba(241, 130, 16, 0.08);
-}
-
-.hover-glow {
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.hover-glow:hover {
-  transform: scale(1.06);
-  box-shadow: 0 8px 24px rgba(241, 130, 16, 0.25);
-}
-
 .text-accent {
   color: var(--color-orange);
 }
@@ -134,25 +44,139 @@ body {
   color: var(--color-brown);
 }
 
-.bg-accent {
-  background-color: var(--color-orange);
+.section-padding {
+  padding-top: clamp(5rem, 12vw, 8rem);
+  padding-bottom: clamp(5rem, 12vw, 8rem);
 }
 
-.bg-mist {
-  background-color: color-mix(in srgb, var(--color-mist) 35%, white);
+.hero-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(185, 204, 211, 0.7), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 90% 20%, rgba(184, 147, 126, 0.45), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(241, 130, 16, 0.12), transparent 45%),
+    linear-gradient(180deg, #eef3f5 0%, #faf9f8 60%, #f5f0eb 100%);
 }
 
-.bg-tan-soft {
-  background-color: color-mix(in srgb, var(--color-tan) 22%, white);
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
 }
 
-.border-tan {
-  border-color: color-mix(in srgb, var(--color-tan) 45%, white);
+.scroll-line {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--color-orange), transparent);
+  animation: scroll-pulse 2s ease-in-out infinite;
 }
 
-@media (max-width: 767px) {
-  html,
-  body {
-    overflow: hidden;
+@keyframes scroll-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scaleY(0.6);
   }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.75rem;
+  border-radius: 9999px;
+  background: var(--color-orange);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(241, 130, 16, 0.35);
+  filter: brightness(1.05);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.75rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-charcoal) 20%, transparent);
+  color: var(--color-charcoal);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.btn-outline:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-brown);
+  background: color-mix(in srgb, var(--color-mist) 40%, white);
+}
+
+.link-hover {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.link-hover:hover {
+  color: var(--color-orange);
+}
+
+.link-hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: var(--color-orange);
+  transition: width 0.3s ease;
+}
+
+.link-hover:hover::after {
+  width: 100%;
+}
+
+.card-hover {
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 48px rgba(51, 44, 43, 0.1),
+    0 4px 16px rgba(241, 130, 16, 0.06);
+}
+
+.input-field {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--color-tan) 45%, transparent);
+  background: white;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-orange) 18%, transparent);
 }
