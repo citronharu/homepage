@@ -18,7 +18,7 @@
 | **参考** | [GP Online](https://www.gpol.co.jp)（UI・配色・Hero のみ。構成は維持） / [LIG 記事](https://liginc.co.jp/web/useful/172778) |
 | **GitHub** | https://github.com/citronharu/homepage （`main` ブランチ） |
 | **デプロイ** | Vercel（Framework: Next.js） |
-| **最新コミット** | `3c6c883` — Vercel ビルド修正、スライド文案反映、大阪拠点セクション追加 |
+| **最新コミット** | （push 後に更新） |
 
 ### 業務範囲
 
@@ -313,3 +313,7 @@
 ### 2026-06-10 — 料金プラン文言削除
 
 - スタンダードプランの features から「オリジナルデザイン」を削除
+
+### 2026-06-10 — 拠点セクション文案の更新
+
+- `#location` の説明文を対面・オンライン対応の訴求に簡潔化
