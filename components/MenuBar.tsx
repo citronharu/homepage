@@ -36,7 +36,7 @@ export default function MenuBar({
   });
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex h-7 items-center justify-between px-4 text-xs text-white/90 glass-dark">
+    <header className="fixed top-0 right-0 left-0 z-50 flex h-7 items-center justify-between px-4 text-xs text-white/90 glass-dark">
       <nav className="flex items-center gap-1">
         <span className="mr-2 text-sm">&#63743;</span>
         <span className="hidden font-semibold sm:inline">Web制作代行</span>
@@ -48,10 +48,10 @@ export default function MenuBar({
             onMouseLeave={() => onMenuHover(null)}
           >
             <button
-              className={`rounded px-2 py-0.5 transition-colors ${
+              className={`rounded px-2 py-0.5 transition-all duration-200 ${
                 activeMenu === menu.label
                   ? "bg-white/20"
-                  : "hover:bg-white/15"
+                  : "hover:bg-white/15 hover:-translate-y-px"
               }`}
             >
               {menu.label}
@@ -62,7 +62,7 @@ export default function MenuBar({
                   <button
                     key={item.id}
                     onClick={() => onOpenWindow(item.id)}
-                    className="block w-full px-3 py-1.5 text-left transition-colors hover:bg-white/20"
+                    className="block w-full px-3 py-1.5 text-left transition-all duration-200 hover:bg-white/20 hover:pl-4"
                   >
                     {item.label}
                   </button>

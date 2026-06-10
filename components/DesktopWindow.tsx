@@ -81,7 +81,7 @@ export default function DesktopWindow({
             isMobile
               ? "inset-7 bottom-16 rounded-xl"
               : "rounded-xl"
-          } ${isFocused ? "ring-1 ring-white/30" : ""}`}
+          } ${isFocused ? "ring-1 ring-[color-mix(in_srgb,var(--color-orange)_40%,white)]" : ""}`}
           style={{
             left: isMobile ? undefined : position.x,
             top: isMobile ? undefined : position.y,
@@ -123,7 +123,7 @@ export default function DesktopWindow({
             </span>
             <div className="w-12" />
           </div>
-          <div className="window-content flex-1 overflow-y-auto bg-white/95 p-5 text-gray-800">
+          <div className="window-content flex-1 overflow-y-auto bg-[var(--color-surface)] p-5 backdrop-blur-sm">
             {children}
           </div>
         </motion.div>

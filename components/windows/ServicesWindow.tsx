@@ -24,16 +24,20 @@ const SERVICES = [
 export default function ServicesWindow() {
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-bold text-gray-900">提供サービス</h2>
+      <h2 className="font-display text-lg font-bold text-[var(--color-charcoal)]">提供サービス</h2>
       <div className="grid gap-3 sm:grid-cols-2">
         {SERVICES.map((s) => (
           <div
             key={s.title}
-            className="hover-lift rounded-xl border border-gray-100 bg-gray-50 p-4"
+            className="hover-lift rounded-xl border border-tan bg-tan-soft p-4"
           >
-            <span className="text-2xl">{s.icon}</span>
-            <h3 className="mt-2 font-semibold text-gray-900">{s.title}</h3>
-            <p className="mt-1 text-sm text-gray-600">{s.desc}</p>
+            <span className="text-2xl transition-transform duration-300 hover:scale-110 inline-block">
+              {s.icon}
+            </span>
+            <h3 className="mt-2 font-semibold text-[var(--color-charcoal)]">{s.title}</h3>
+            <p className="mt-1 text-sm text-[color-mix(in_srgb,var(--color-charcoal)_70%,white)]">
+              {s.desc}
+            </p>
           </div>
         ))}
       </div>
