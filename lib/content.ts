@@ -2,10 +2,13 @@ export const SITE = {
   name: "Ottorino",
   nameJa: "オットリーノ",
   tagline: "Webサイト・社内システムの設計・開発",
-  owner: "個人事業主　松尾春希",
+  representative: "松尾春希",
+  owner: "代表　松尾春希",
   description:
     "Web制作から業務システム開発まで。ヒアリングから設計・開発・公開・運用まで、一人で責任を持って伴走します。",
-  email: "hello@example.com",
+  email: "citron.haru0502@gmail.com",
+  phone: "07016551028",
+  phoneDisplay: "070-1655-1028",
   ctaContact: "お問い合わせ",
 } as const;
 

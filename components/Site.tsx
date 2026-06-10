@@ -448,12 +448,36 @@ export default function Site() {
                 <dl className="mt-8 space-y-5 text-sm">
                   <div>
                     <dt className="section-title-en text-[10px]">Office</dt>
-                    <dd className="mt-1 font-medium text-[var(--color-charcoal)]">{SITE.name}</dd>
+                    <dd className="mt-1 font-medium text-[var(--color-charcoal)]">
+                      {SITE.name}（{SITE.nameJa}）
+                    </dd>
                   </div>
                   <div>
-                    <dt className="section-title-en text-[10px]">Scope</dt>
-                    <dd className="mt-1 text-[color-mix(in_srgb,var(--color-charcoal)_70%,white)]">
-                      {SITE.tagline}
+                    <dt className="section-title-en text-[10px]">Representative</dt>
+                    <dd className="mt-1 font-medium text-[var(--color-charcoal)]">
+                      代表　{SITE.representative}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="section-title-en text-[10px]">Email</dt>
+                    <dd className="mt-1">
+                      <a
+                        href={`mailto:${SITE.email}`}
+                        className="link-hover text-[var(--color-deep)] underline-offset-2 hover:underline"
+                      >
+                        {SITE.email}
+                      </a>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="section-title-en text-[10px]">Tel</dt>
+                    <dd className="mt-1">
+                      <a
+                        href={`tel:${SITE.phone}`}
+                        className="link-hover text-[var(--color-deep)] underline-offset-2 hover:underline"
+                      >
+                        {SITE.phoneDisplay}
+                      </a>
                     </dd>
                   </div>
                 </dl>
@@ -524,6 +548,15 @@ export default function Site() {
             </p>
             <p className="mt-2 text-xs text-[color-mix(in_srgb,var(--color-charcoal)_40%,white)]">
               {SITE.owner}
+            </p>
+            <p className="mt-1 text-xs text-[color-mix(in_srgb,var(--color-charcoal)_40%,white)]">
+              <a href={`mailto:${SITE.email}`} className="hover:text-[var(--color-deep)]">
+                {SITE.email}
+              </a>
+              {" · "}
+              <a href={`tel:${SITE.phone}`} className="hover:text-[var(--color-deep)]">
+                {SITE.phoneDisplay}
+              </a>
             </p>
           </div>
           <p className="text-xs text-[color-mix(in_srgb,var(--color-charcoal)_40%,white)]">
