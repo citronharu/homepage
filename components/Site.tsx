@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import HeroFixedBackground from "@/components/HeroFixedBackground";
 import {
   CASE_FILTERS,
   CASE_STUDIES,
@@ -118,7 +119,7 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="hero-bg relative flex min-h-[100svh] items-center pt-16 lg:pt-[72px]">
+    <section className="relative flex min-h-[100svh] items-center pt-16 lg:pt-[72px]">
       <div className="mx-auto w-full max-w-6xl px-6 py-20 lg:px-10 lg:py-28">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -168,8 +169,9 @@ export default function Site() {
 
   return (
     <>
+      <HeroFixedBackground />
       <Header />
-      <main>
+      <main className="relative z-10">
         <Hero />
 
         <section id="services" className="section-padding bg-[var(--color-surface)]">
