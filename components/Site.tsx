@@ -59,7 +59,7 @@ function Hero() {
 }
 
 export default function Site() {
-  const [faqOpen, setFaqOpen] = useState<number | null>(0);
+  const [faqOpen, setFaqOpen] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [contactLoading, setContactLoading] = useState(false);
   const [contactError, setContactError] = useState<string | null>(null);

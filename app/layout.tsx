@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { M_PLUS_1_Code, Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
+import ScrollToTop from "@/components/ScrollToTop";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -39,7 +40,10 @@ export default function RootLayout({
       lang="ja"
       className={`${notoSansJP.variable} ${notoSerifJP.variable} ${mPlus1Code.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <ScrollToTop />
+        {children}
+      </body>
     </html>
   );
 }
