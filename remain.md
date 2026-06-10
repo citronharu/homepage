@@ -28,3 +28,7 @@
 - Apple 純正 OS のような UI
 - カーソルを合わせると動くアニメーション
 - 今後のプロンプトは都度このファイルの追記ログに記録する
+
+### 2026-06-10（追記）
+
+- GitHub リポジトリ: https://github.com/citronharu/homepage にプッシュ
