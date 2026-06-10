@@ -207,7 +207,7 @@ export default function Site() {
           </div>
         </section>
 
-        <section id="works" className="section-padding bg-surface-alt">
+        <section id="works" className="section-padding section-grid-bg">
           <div className="mx-auto max-w-6xl px-6 lg:px-10">
             <Reveal>
               <SectionLabel en="Cases" ja="導入事例・試作" />
@@ -403,7 +403,7 @@ export default function Site() {
           </div>
         </section>
 
-        <section id="faq" className="section-padding bg-surface-alt">
+        <section id="faq" className="section-padding section-grid-bg">
           <div className="mx-auto max-w-3xl px-6 lg:px-10">
             <Reveal>
               <SectionLabel en="FAQ" ja="よくある質問" />

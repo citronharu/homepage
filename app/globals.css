@@ -76,6 +76,10 @@ body {
   letter-spacing: 0.02em;
 }
 
+.section-grid-bg {
+  background: transparent;
+}
+
 .hero-fixed-bg {
   position: fixed;
   inset: 0;
