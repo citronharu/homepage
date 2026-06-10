@@ -21,6 +21,7 @@
 - `app/` — ページ・グローバルスタイル
 - `components/Site.tsx` — シングルページ本体
 - `lib/content.ts` — 文言・データ
+- `lib/biography.ts` — 来歴・プロジェクト実績（松尾春希）
 
 ## デザイン
 
