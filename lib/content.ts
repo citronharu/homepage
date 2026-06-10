@@ -57,19 +57,19 @@ export const WORKS = [
     title: "カフェ LP",
     category: "Webサイト",
     desc: "地域密着カフェの集客用LP。モバイルファーストで CV を改善。",
-    gradient: "from-[#B8937E] to-[#7D4429]",
+    gradient: "from-[#7ECAE3] to-[#2A7A9B]",
   },
   {
     title: "在庫管理システム",
     category: "社内システム",
     desc: "Excel 管理から Web アプリへ移行。入力工数を 60% 削減。",
-    gradient: "from-[#B9CCD3] to-[#7D4429]",
+    gradient: "from-[#D4EFF9] to-[#7ECAE3]",
   },
   {
     title: "士業コーポレート",
     category: "Webサイト",
     desc: "信頼感のあるデザインで問い合わせ数 30% 向上。",
-    gradient: "from-[#F18210] to-[#7D4429]",
+    gradient: "from-[#FFD54F] to-[#7ECAE3]",
   },
 ] as const;
 

@@ -1,14 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --color-mist: #b9ccd3;
-  --color-brown: #7d4429;
-  --color-tan: #b8937e;
-  --color-orange: #f18210;
-  --color-charcoal: #332c2b;
+  /* 水色・黄色・白 基調 */
+  --color-sky: #7ecae3;
+  --color-sky-light: #d4eff9;
+  --color-sky-pale: #eef9fd;
+  --color-yellow: #ffd54f;
+  --color-yellow-deep: #f0b429;
+  --color-text: #1a3d52;
+  --color-deep: #2a7a9b;
+
+  /* 既存コンポーネント互換エイリアス */
+  --color-mist: var(--color-sky-light);
+  --color-brown: var(--color-deep);
+  --color-tan: var(--color-sky);
+  --color-orange: var(--color-yellow);
+  --color-charcoal: var(--color-text);
   --color-surface: #ffffff;
-  --color-surface-alt: #f7f8f9;
-  --color-border: color-mix(in srgb, var(--color-tan) 35%, #e8e8e8);
+  --color-surface-alt: var(--color-sky-pale);
+  --color-border: color-mix(in srgb, var(--color-sky) 45%, #ffffff);
 }
 
 * {
@@ -23,7 +33,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  color: var(--color-charcoal);
+  color: var(--color-text);
   font-family: var(--font-noto), -apple-system, BlinkMacSystemFont, "SF Pro Text",
     system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -44,11 +54,11 @@ body {
 }
 
 .text-accent {
-  color: var(--color-orange);
+  color: var(--color-deep);
 }
 
 .text-brown {
-  color: var(--color-brown);
+  color: var(--color-deep);
 }
 
 .bg-surface-alt {
@@ -62,9 +72,10 @@ body {
 
 .hero-bg {
   background: linear-gradient(
-    180deg,
+    165deg,
     var(--color-surface) 0%,
-    color-mix(in srgb, var(--color-mist) 12%, white) 100%
+    var(--color-sky-pale) 45%,
+    color-mix(in srgb, var(--color-sky-light) 80%, var(--color-yellow) 8%) 100%
   );
 }
 
@@ -82,7 +93,7 @@ body {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-orange);
+  color: var(--color-deep);
 }
 
 .section-title-ja {
@@ -90,7 +101,7 @@ body {
   font-size: clamp(1.75rem, 4vw, 2.25rem);
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: var(--color-charcoal);
+  color: var(--color-text);
 }
 
 .btn-primary {
@@ -99,10 +110,10 @@ body {
   justify-content: center;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
-  background: var(--color-orange);
-  color: white;
+  background: var(--color-yellow);
+  color: var(--color-text);
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.04em;
   transition:
     background 0.2s ease,
@@ -112,8 +123,8 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(241, 130, 16, 0.3);
-  filter: brightness(1.03);
+  background: var(--color-yellow-deep);
+  box-shadow: 0 6px 20px rgba(240, 180, 41, 0.35);
 }
 
 .btn-secondary {
@@ -124,7 +135,7 @@ body {
   border-radius: 4px;
   border: 1px solid var(--color-border);
   background: var(--color-surface);
-  color: var(--color-charcoal);
+  color: var(--color-text);
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.04em;
@@ -136,20 +147,20 @@ body {
 
 .btn-secondary:hover {
   transform: translateY(-1px);
-  border-color: var(--color-brown);
-  background: color-mix(in srgb, var(--color-mist) 25%, white);
+  border-color: var(--color-sky);
+  background: var(--color-sky-pale);
 }
 
 .link-hover {
   position: relative;
-  color: var(--color-charcoal);
+  color: var(--color-text);
   font-size: 0.8125rem;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .link-hover:hover {
-  color: var(--color-orange);
+  color: var(--color-deep);
 }
 
 .card-gp {
@@ -164,8 +175,8 @@ body {
 
 .card-gp:hover {
   transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--color-tan) 60%, transparent);
-  box-shadow: 0 12px 32px rgba(51, 44, 43, 0.08);
+  border-color: var(--color-sky);
+  box-shadow: 0 12px 32px rgba(126, 202, 227, 0.25);
 }
 
 .input-field {
@@ -182,6 +193,14 @@ body {
 }
 
 .input-field:focus {
-  border-color: var(--color-orange);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-orange) 15%, transparent);
+  border-color: var(--color-sky);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-sky) 35%, transparent);
+}
+
+.bg-process {
+  background: linear-gradient(
+    135deg,
+    var(--color-deep) 0%,
+    color-mix(in srgb, var(--color-sky) 40%, var(--color-deep)) 100%
+  );
 }

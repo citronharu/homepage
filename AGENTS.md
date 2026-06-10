@@ -25,5 +25,5 @@
 
 ## デザイン
 
-- カラーパレット: `#B9CCD3` `#7D4429` `#B8937E` `#F18210` `#332C2B`
+- カラーパレット: 水色 `#7ECAE3` / 黄色 `#FFD54F` / 白 `#FFFFFF`（テキスト `#1A3D52`）
 - 制作会社風のスクロール型レイアウト（Hero / Services / Works / Process / Pricing / FAQ / Contact）

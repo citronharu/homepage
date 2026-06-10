@@ -224,19 +224,19 @@ export default function Site() {
           </div>
         </section>
 
-        <section id="process" className="section-padding bg-[var(--color-charcoal)] text-white">
+        <section id="process" className="section-padding bg-process text-white">
           <div className="mx-auto max-w-6xl px-6 lg:px-10">
             <Reveal>
               <div className="section-heading">
-                <span className="section-title-en">Process</span>
+                <span className="section-title-en text-[var(--color-yellow)]">Process</span>
                 <h2 className="section-title-ja text-white">制作の流れ</h2>
               </div>
             </Reveal>
-            <div className="grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 lg:grid-cols-5">
+            <div className="grid gap-px overflow-hidden rounded-xl border border-white/20 bg-white/10 lg:grid-cols-5">
               {STEPS.map((step, i) => (
                 <Reveal key={step.num} delay={i * 0.05}>
-                  <div className="bg-[var(--color-charcoal)] p-6 transition-colors hover:bg-[color-mix(in_srgb,var(--color-brown)_35%,var(--color-charcoal))] lg:p-7">
-                    <span className="font-mono-accent text-lg font-bold text-accent">{step.num}</span>
+                  <div className="bg-[color-mix(in_srgb,var(--color-deep)_90%,black)] p-6 transition-colors hover:bg-[color-mix(in_srgb,var(--color-sky)_30%,var(--color-deep))] lg:p-7">
+                    <span className="font-mono-accent text-lg font-bold text-[var(--color-yellow)]">{step.num}</span>
                     <h3 className="font-display mt-3 text-sm font-bold">{step.title}</h3>
                     <p className="mt-2 text-xs leading-relaxed text-white/60">{step.desc}</p>
                   </div>
@@ -259,11 +259,13 @@ export default function Site() {
                 <Reveal key={plan.name} delay={i * 0.06}>
                   <div
                     className={`card-gp p-8 ${
-                      plan.highlight ? "border-accent ring-1 ring-accent/20" : ""
+                      plan.highlight
+                        ? "border-[var(--color-yellow)] bg-[color-mix(in_srgb,var(--color-yellow)_12%,white)] ring-1 ring-[var(--color-yellow)]/30"
+                        : ""
                     }`}
                   >
                     {plan.highlight && (
-                      <span className="mb-3 inline-block rounded bg-accent px-2 py-0.5 text-[10px] font-medium text-white">
+                      <span className="mb-3 inline-block rounded bg-[var(--color-yellow)] px-2 py-0.5 text-[10px] font-medium text-[var(--color-text)]">
                         人気
                       </span>
                     )}
