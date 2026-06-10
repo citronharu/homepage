@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { M_PLUS_1_Code, Noto_Sans_JP } from "next/font/google";
+import { M_PLUS_1_Code, Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
-  weight: ["400", "500",  "700"],
+  weight: ["400", "500", "700"],
   variable: "--font-noto",
+  display: "swap",
+});
+
+const notoSerifJP = Noto_Serif_JP({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -28,7 +35,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className={`${notoSansJP.variable} ${mPlus1Code.variable}`}>
+    <html
+      lang="ja"
+      className={`${notoSansJP.variable} ${notoSerifJP.variable} ${mPlus1Code.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

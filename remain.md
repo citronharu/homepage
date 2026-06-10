@@ -14,10 +14,10 @@
 | **肩書き** | Webサイト・社内システムの設計・開発 |
 | **事業形態** | 個人事業主（フッター表記: 個人事業主　松尾） |
 | **UI 形式** | 制作会社風シングルページ（スクロール型）※ macOS デスクトップ UI は廃止 |
-| **参考** | [LIG: 大阪のイケてる Web 制作会社まとめ](https://liginc.co.jp/web/useful/172778) |
+| **参考** | [GP Online](https://www.gpol.co.jp)（UI・配色・Hero のみ。構成は維持） / [LIG 記事](https://liginc.co.jp/web/useful/172778) |
 | **GitHub** | https://github.com/citronharu/homepage （`main` ブランチ） |
 | **デプロイ** | Vercel（Framework: Next.js） |
-| **最新コミット** | `d11912b` — 制作会社風サイトへ全面作り直し |
+| **最新コミット** | GP Online 参考 UI 刷新（白基調・Hero 中央配置・日本語ナビ） |
 
 ### 業務範囲
 
@@ -42,16 +42,17 @@
 
 | 色 | Hex | 用途 |
 |----|-----|------|
-| ライトブルーグレー | `#B9CCD3` | 背景・グラデーション |
-| ディープブラウン | `#7D4429` | テキストアクセント |
-| ミューテッドタン | `#B8937E` | ボーダー・カード |
+| ライトブルーグレー | `#B9CCD3` | 背景アクセント |
+| ディープブラウン | `#7D4429` | テキストアクセント・Hero EN |
+| ミューテッドタン | `#B8937E` | ボーダー |
 | ビブラントオレンジ | `#F18210` | CTA・強調 |
-| ダークチャコール | `#332C2B` | 本文・フッター背景 |
+| ダークチャコール | `#332C2B` | 本文 |
+| 白 / 薄グレー | `#FFFFFF` / `#F7F8F9` | 背景（GP 風クリーン） |
 
 **フォント**
 
 - 指定: M Plus 1m / Halimum / Noto Sans JP / つなぎゴシック / かんじゅくゴシック(カンジなし)
-- 実装: Google Fonts **Noto Sans JP**（本文）+ **M PLUS 1 Code**（ラベル・価格）
+- 実装: **Noto Sans JP**（本文）+ **Noto Serif JP**（Hero 英語）+ **M PLUS 1 Code**（ラベル・価格）
 
 **インタラクション**
 
@@ -131,3 +132,10 @@
 ### 2026-06-10 — Git 運用ルール
 
 - 変更を加えるたび、作業完了時に毎回 Git へ commit & `origin/main` へ push するルールを追記
+
+### 2026-06-10 — GP Online 参考 UI 刷新
+
+- [GP Online](https://www.gpol.co.jp) の UI・配色・Hero タイポグラフィを参考（サイト構成は維持）
+- 白基調、日本語ナビ、Hero 中央配置（JP 大見出し + EN セリフ体サブ）
+- `btn-primary` / `btn-secondary`、`.card-gp`、`.section-heading` ユーティリティ追加
+- `lib/content.ts` に `HERO` オブジェクト追加

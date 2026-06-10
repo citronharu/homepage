@@ -5,15 +5,23 @@ export const SITE = {
   description:
     "Web制作から業務システム開発まで。ヒアリングから設計・開発・公開・運用まで、一人で責任を持って伴走します。",
   email: "hello@example.com",
+  ctaContact: "お問い合わせ",
+} as const;
+
+export const HERO = {
+  jp: "ビジネスを加速させる伴走者",
+  en: "Be an Accompanist",
+  sub: "マーケティング視点 × デジタル技術 × クリエイティブ思考で、お客様のビジネスをさらに加速させ、新たな価値を共創する伴走者。",
+  ctaPrimary: "ご相談はこちら",
+  ctaSecondary: "制作実績を見る",
 } as const;
 
 export const NAV = [
-  { label: "Services", href: "#services" },
-  { label: "Works", href: "#works" },
-  { label: "Process", href: "#process" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "サービス", href: "#services" },
+  { label: "実績", href: "#works" },
+  { label: "流れ", href: "#process" },
+  { label: "料金", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
 ] as const;
 
 export const SERVICES = [
