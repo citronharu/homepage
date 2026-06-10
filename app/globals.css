@@ -110,18 +110,18 @@ body {
 .hero-fixed-bg__pattern--a {
   background-image:
     repeating-linear-gradient(
-      0deg,
+      45deg,
       transparent,
-      transparent 47px,
-      color-mix(in srgb, var(--color-sky) 15%, transparent) 47px,
-      color-mix(in srgb, var(--color-sky) 15%, transparent) 48px
+      transparent 23px,
+      color-mix(in srgb, var(--color-sky) 15%, transparent) 23px,
+      color-mix(in srgb, var(--color-sky) 15%, transparent) 24px
     ),
     repeating-linear-gradient(
-      90deg,
+      -45deg,
       transparent,
-      transparent 47px,
-      color-mix(in srgb, var(--color-sky) 15%, transparent) 47px,
-      color-mix(in srgb, var(--color-sky) 15%, transparent) 48px
+      transparent 23px,
+      color-mix(in srgb, var(--color-sky) 15%, transparent) 23px,
+      color-mix(in srgb, var(--color-sky) 15%, transparent) 24px
     );
   background-size: 48px 48px;
   animation: heroGridFlowLeftA 10s linear infinite;
@@ -130,18 +130,18 @@ body {
 .hero-fixed-bg__pattern--b {
   background-image:
     repeating-linear-gradient(
-      0deg,
+      60deg,
       transparent,
-      transparent 63px,
-      color-mix(in srgb, var(--color-deep) 8%, transparent) 63px,
-      color-mix(in srgb, var(--color-deep) 8%, transparent) 64px
+      transparent 31px,
+      color-mix(in srgb, var(--color-deep) 8%, transparent) 31px,
+      color-mix(in srgb, var(--color-deep) 8%, transparent) 32px
     ),
     repeating-linear-gradient(
-      90deg,
+      -60deg,
       transparent,
-      transparent 63px,
-      color-mix(in srgb, var(--color-deep) 8%, transparent) 63px,
-      color-mix(in srgb, var(--color-deep) 8%, transparent) 64px
+      transparent 31px,
+      color-mix(in srgb, var(--color-deep) 8%, transparent) 31px,
+      color-mix(in srgb, var(--color-deep) 8%, transparent) 32px
     );
   background-size: 64px 64px;
   animation: heroGridFlowLeftB 15s linear infinite;
@@ -152,13 +152,13 @@ body {
   position: absolute;
   inset: 0;
   background-image: repeating-linear-gradient(
-    90deg,
+    45deg,
     transparent,
-    transparent 95px,
-    color-mix(in srgb, var(--color-yellow) 5%, transparent) 95px,
-    color-mix(in srgb, var(--color-yellow) 5%, transparent) 96px
+    transparent 47px,
+    color-mix(in srgb, var(--color-yellow) 5%, transparent) 47px,
+    color-mix(in srgb, var(--color-yellow) 5%, transparent) 48px
   );
-  background-size: 96px 100%;
+  background-size: 96px 96px;
   animation: heroGridFlowLeftAccent 12s linear infinite;
 }
 
@@ -167,7 +167,7 @@ body {
     background-position: 0 0;
   }
   to {
-    background-position: -48px 0;
+    background-position: -48px -48px;
   }
 }
 
@@ -176,7 +176,7 @@ body {
     background-position: 0 0;
   }
   to {
-    background-position: -64px 0;
+    background-position: -64px -64px;
   }
 }
 
@@ -185,7 +185,7 @@ body {
     background-position: 0 0;
   }
   to {
-    background-position: -96px 0;
+    background-position: -96px -96px;
   }
 }
 
