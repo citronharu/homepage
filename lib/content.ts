@@ -133,7 +133,7 @@ export const CASE_STUDIES = [
     id: "wantedly-pr",
     type: "導入事例" as const,
     title: "Wantedlyストーリー PR戦略",
-    client: "Vexum（自社）",
+    client: "採用広報プロジェクト",
     period: "2026年〜",
     role: "PR戦略プロジェクトマネージャー",
     summary:
