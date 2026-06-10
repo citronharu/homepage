@@ -14,12 +14,12 @@ export const HERO = {
   en: "Be an Accompanist",
   sub: "マーケティング視点 × デジタル技術 × クリエイティブ思考で、お客様のビジネスをさらに加速させ、新たな価値を共創する伴走者。",
   ctaPrimary: "ご相談はこちら",
-  ctaSecondary: "制作実績を見る",
+  ctaSecondary: "導入事例を見る",
 } as const;
 
 export const NAV = [
   { label: "サービス", href: "#services" },
-  { label: "実績", href: "#works" },
+  { label: "事例", href: "#works" },
   { label: "流れ", href: "#process" },
   { label: "料金", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
@@ -52,24 +52,107 @@ export const SERVICES = [
   },
 ] as const;
 
-export const WORKS = [
+export const CASE_FILTERS = ["すべて", "導入事例", "試作・設計"] as const;
+
+export type CaseFilter = (typeof CASE_FILTERS)[number];
+export type CaseType = "導入事例" | "試作・設計";
+
+export const CASE_STUDIES = [
   {
-    title: "カフェ LP",
-    category: "Webサイト",
-    desc: "地域密着カフェの集客用LP。モバイルファーストで CV を改善。",
+    id: "insou-recruitment",
+    type: "導入事例" as const,
+    title: "採用業務効率化システム",
+    client: "INSOU様",
+    period: "1ヶ月（実稼働16日間）",
+    role: "アジャイルMVP開発・上駐支援",
+    summary:
+      "複数求人媒体から届く応募情報の手作業処理を、AIメール解析とSlack連携で自動化。現場のシャドーイングから本番定着まで一気通貫で支援。",
+    results: [
+      "応募メールのAI自動解析により、氏名・連絡先・希望店舗を抽出",
+      "Googleスプレッドシートへの一元登録と重複応募の照合",
+      "Slackリアルタイム通知と30分以内初回対応のアラート",
+      "夜間帯の通知抑制など、現場運用に合わせたチューニング",
+    ],
+    details: [
+      {
+        title: "Phase 0 — 要件定義",
+        body: "採用担当者の実業務を現場でシャドーイング。LINE公式API・各媒体のCSV仕様を調査し、共通データフォーマットとMVPスコープを合意。",
+      },
+      {
+        title: "Phase 1 — データ一元化",
+        body: "求人媒体の応募通知メールをAIで解析し、スプレッドシートへ自動登録。Slackへのリアルタイム通知を構築。",
+      },
+      {
+        title: "Phase 2 — 初回対応支援",
+        body: "未対応アラート、不足情報のAI判別、確認メッセージの半自動生成機能を実装。",
+      },
+      {
+        title: "Phase 3 — 本番定着",
+        body: "権限設定・操作ログ管理の徹底、通知ノイズの抑制など運用フェーズまで伴走。",
+      },
+    ],
+    tags: ["AIメール解析", "Slack連携", "採用DX", "アジャイルMVP"],
     gradient: "from-[#7ECAE3] to-[#2A7A9B]",
   },
   {
-    title: "在庫管理システム",
-    category: "社内システム",
-    desc: "Excel 管理から Web アプリへ移行。入力工数を 60% 削減。",
-    gradient: "from-[#D4EFF9] to-[#7ECAE3]",
+    id: "bcg-interview",
+    type: "試作・設計" as const,
+    title: "面接予約管理システム",
+    client: "BCG Holdings様",
+    period: "仕様策定〜テスト環境版（2026年6月）",
+    role: "フルスタック設計・仕様書作成",
+    summary:
+      "店舗面接の予約・出欠・評価を一元管理するシステムを、3層権限分離・SMS認証・風営法対応を含めて設計。不正予約防止と運用ミス削減を両立。",
+    results: [
+      "応募者・店舗管理者・本部管理者の3層権限分離",
+      "ログイン・登録・電話番号変更すべてにSMS認証（6桁・5分有効）",
+      "風営法第36条対応（18歳未満不可・親権者同意チェック）",
+      "二重予約防止・不正検知フラグ・スロット削除時のSMS自動通知",
+    ],
+    details: [
+      {
+        title: "応募者向け機能",
+        body: "マイページでの予約履歴確認、日程変更（旧予約の自動キャンセル＋新予約確定）、プロフィール管理。",
+      },
+      {
+        title: "店舗管理者向け機能",
+        body: "スロット管理（朝の部・夜の部）、出欠管理（来場済・遅刻・欠席）、面接評価（A/B/C）の記録。",
+      },
+      {
+        title: "本部管理者向け機能",
+        body: "全店舗スロット管理、店舗の追加・削除、CMS（バナー・注意事項）、スロット追加申請の承認・拒否。",
+      },
+    ],
+    tags: ["権限分離", "SMS認証", "風営法対応", "仕様設計"],
+    gradient: "from-[#FFD54F] to-[#7ECAE3]",
   },
   {
-    title: "士業コーポレート",
-    category: "Webサイト",
-    desc: "信頼感のあるデザインで問い合わせ数 30% 向上。",
-    gradient: "from-[#FFD54F] to-[#7ECAE3]",
+    id: "wantedly-pr",
+    type: "導入事例" as const,
+    title: "Wantedlyストーリー PR戦略",
+    client: "Vexum（自社）",
+    period: "2026年〜",
+    role: "PR戦略プロジェクトマネージャー",
+    summary:
+      "採用と営業信頼獲得の二重目的が混在する広報活動を整理。評価指標の明確化と記事戦略を経営層・上位役職者と協議し、実行フェーズへ推進。",
+    results: [
+      "採用目的とクライアント向け信頼獲得目的の切り分けを提案",
+      "記事の対象読者と訴求メッセージの言語化",
+      "採用数・記事品質など評価指標の明確化",
+      "経営層への直談判から戦略会議・実行まで主導",
+    ],
+    details: [
+      {
+        title: "背景",
+        body: "求人募集要項の文章に課題を感じ、自らライティング業務の担当を経営層に提案。",
+      },
+      {
+        title: "アプローチ",
+        body: "Wantedlyストーリーを単なる記事制作ではなく、採用と営業の両面で機能する広報チャネルとして再設計。",
+      },
+    ],
+    tags: ["採用広報", "コンテンツ戦略", "PM"],
+    gradient: "from-[#D4EFF9] to-[#7ECAE3]",
   },
 ] as const;
 

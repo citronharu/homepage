@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import {
+  CASE_FILTERS,
+  CASE_STUDIES,
   FAQS,
   HERO,
   NAV,
@@ -10,7 +12,7 @@ import {
   SERVICES,
   SITE,
   STEPS,
-  WORKS,
+  type CaseFilter,
 } from "@/lib/content";
 
 const fadeUp = {
@@ -153,6 +155,13 @@ function Hero() {
 export default function Site() {
   const [faqOpen, setFaqOpen] = useState<number | null>(0);
   const [submitted, setSubmitted] = useState(false);
+  const [caseFilter, setCaseFilter] = useState<CaseFilter>("すべて");
+  const [expandedCase, setExpandedCase] = useState<string | null>(CASE_STUDIES[0]?.id ?? null);
+
+  const filteredCases =
+    caseFilter === "すべて"
+      ? CASE_STUDIES
+      : CASE_STUDIES.filter((c) => c.type === caseFilter);
 
   return (
     <>
@@ -196,31 +205,120 @@ export default function Site() {
         <section id="works" className="section-padding bg-surface-alt">
           <div className="mx-auto max-w-6xl px-6 lg:px-10">
             <Reveal>
-              <SectionLabel en="Works" ja="制作実績" />
+              <SectionLabel en="Cases" ja="導入事例・試作" />
+              <p className="-mt-6 mb-8 max-w-2xl text-sm leading-relaxed text-[color-mix(in_srgb,var(--color-charcoal)_65%,white)]">
+                クライアントへの導入支援と、仕様策定・MVP開発などの試作・設計実績をまとめています。
+              </p>
             </Reveal>
-            <div className="grid gap-6 lg:grid-cols-3">
-              {WORKS.map((w, i) => (
-                <Reveal key={w.title} delay={i * 0.08}>
-                  <article className="card-gp group overflow-hidden">
-                    <div
-                      className={`aspect-[16/10] bg-gradient-to-br ${w.gradient} transition-transform duration-500 group-hover:scale-[1.02]`}
-                    />
-                    <div className="p-5">
-                      <p className="section-title-en text-[10px]">{w.category}</p>
-                      <h3 className="font-display mt-1 text-base font-bold text-[var(--color-charcoal)]">
-                        {w.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-[color-mix(in_srgb,var(--color-charcoal)_65%,white)]">
-                        {w.desc}
+
+            <Reveal delay={0.05}>
+              <div className="mb-10 flex flex-wrap gap-2">
+                {CASE_FILTERS.map((filter) => (
+                  <button
+                    key={filter}
+                    type="button"
+                    onClick={() => setCaseFilter(filter)}
+                    className={`rounded-full px-4 py-1.5 text-xs font-medium transition ${
+                      caseFilter === filter
+                        ? "bg-[var(--color-yellow)] text-[var(--color-text)]"
+                        : "border border-[var(--color-border)] bg-white text-[color-mix(in_srgb,var(--color-charcoal)_70%,white)] hover:border-[var(--color-sky)]"
+                    }`}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
+            </Reveal>
+
+            <div className="space-y-6">
+              {filteredCases.map((c, i) => (
+                <Reveal key={c.id} delay={i * 0.06}>
+                  <article className="card-gp overflow-hidden">
+                    <div className={`h-2 bg-gradient-to-r ${c.gradient}`} />
+                    <div className="p-6 lg:p-8">
+                      <div className="flex flex-wrap items-start justify-between gap-4">
+                        <div>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span
+                              className={`rounded px-2 py-0.5 text-[10px] font-medium ${
+                                c.type === "導入事例"
+                                  ? "bg-[color-mix(in_srgb,var(--color-sky)_35%,white)] text-[var(--color-deep)]"
+                                  : "bg-[color-mix(in_srgb,var(--color-yellow)_40%,white)] text-[var(--color-text)]"
+                              }`}
+                            >
+                              {c.type}
+                            </span>
+                            <span className="font-mono-accent text-[10px] text-[color-mix(in_srgb,var(--color-charcoal)_50%,white)]">
+                              {c.period}
+                            </span>
+                          </div>
+                          <h3 className="font-display mt-3 text-xl font-bold text-[var(--color-charcoal)] lg:text-2xl">
+                            {c.client} — {c.title}
+                          </h3>
+                          <p className="mt-1 text-xs text-brown">{c.role}</p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setExpandedCase(expandedCase === c.id ? null : c.id)}
+                          className="btn-secondary shrink-0 text-xs"
+                        >
+                          {expandedCase === c.id ? "閉じる" : "詳細を見る"}
+                        </button>
+                      </div>
+
+                      <p className="mt-5 text-sm leading-relaxed text-[color-mix(in_srgb,var(--color-charcoal)_72%,white)]">
+                        {c.summary}
                       </p>
+
+                      <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                        {c.results.map((r) => (
+                          <li
+                            key={r}
+                            className="flex gap-2 text-sm text-[color-mix(in_srgb,var(--color-charcoal)_75%,white)]"
+                          >
+                            <span className="shrink-0 text-[var(--color-deep)]">✓</span>
+                            {r}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <ul className="mt-5 flex flex-wrap gap-2">
+                        {c.tags.map((tag) => (
+                          <li
+                            key={tag}
+                            className="rounded border border-[var(--color-border)] px-2.5 py-0.5 text-[11px] text-brown"
+                          >
+                            {tag}
+                          </li>
+                        ))}
+                      </ul>
+
+                      {expandedCase === c.id && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          className="mt-6 space-y-4 border-t border-[var(--color-border)] pt-6"
+                        >
+                          {c.details.map((d) => (
+                            <div
+                              key={d.title}
+                              className="rounded-lg bg-[color-mix(in_srgb,var(--color-sky-pale)_80%,white)] p-4"
+                            >
+                              <h4 className="text-sm font-bold text-[var(--color-charcoal)]">
+                                {d.title}
+                              </h4>
+                              <p className="mt-2 text-sm leading-relaxed text-[color-mix(in_srgb,var(--color-charcoal)_68%,white)]">
+                                {d.body}
+                              </p>
+                            </div>
+                          ))}
+                        </motion.div>
+                      )}
                     </div>
                   </article>
                 </Reveal>
               ))}
             </div>
-            <p className="mt-8 text-center text-xs text-[color-mix(in_srgb,var(--color-charcoal)_45%,white)]">
-              ※ 実績はプレースホルダーです。実案件に差し替え可能です。
-            </p>
           </div>
         </section>
 
