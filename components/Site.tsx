@@ -58,7 +58,7 @@ function Header() {
   return (
     <header className="fixed top-0 right-0 left-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-surface)]">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:h-[72px] lg:px-10">
-        <a href="#" className="font-display text-base font-bold text-[var(--color-charcoal)] lg:text-lg">
+        <a href="#" className="font-display text-lg font-bold text-[var(--color-charcoal)] lg:text-xl">
           {SITE.name}
           <span className="ml-1 font-normal text-[color-mix(in_srgb,var(--color-charcoal)_55%,white)]">
             （{SITE.nameJa}）
@@ -129,10 +129,10 @@ function Hero() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl"
         >
-          <h1 className="font-display text-[clamp(2rem,5vw,3.25rem)] font-bold leading-[1.2] tracking-tight text-[var(--color-charcoal)]">
+          <h1 className="font-display text-[clamp(2.75rem,7.5vw,4.75rem)] font-bold leading-[1.15] tracking-tight text-[var(--color-charcoal)]">
             {HERO.jp}
           </h1>
-          <p className="font-serif-accent mt-4 text-lg tracking-wider text-brown lg:text-xl">
+          <p className="font-serif-accent mt-5 text-xl tracking-wider text-brown lg:text-2xl">
             {HERO.en}
           </p>
           <p className="mt-8 max-w-[640px] text-base leading-[1.9] text-[color-mix(in_srgb,var(--color-charcoal)_72%,white)]">

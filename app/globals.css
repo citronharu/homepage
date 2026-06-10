@@ -89,7 +89,7 @@ body {
 
 .section-title-en {
   font-family: var(--font-mplus), ui-monospace, monospace;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -98,7 +98,7 @@ body {
 
 .section-title-ja {
   font-family: var(--font-noto), sans-serif;
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-size: clamp(2.25rem, 5.5vw, 3.25rem);
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--color-text);
