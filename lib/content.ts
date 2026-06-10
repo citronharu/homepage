@@ -15,7 +15,6 @@ export const SITE = {
 
 export const HERO = {
   jp: "ビジネスを加速させる伴走者",
-  en: "Be an Accompanist",
   sub: "マーケティング視点 × デジタル技術 × クリエイティブ思考で、お客様のビジネスをさらに加速させ、新たな価値を共創する伴走者。",
   ctaPrimary: "ご相談はこちら",
   ctaSecondary: "導入事例を見る",
