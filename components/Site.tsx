@@ -162,7 +162,7 @@ export default function Site() {
   const [contactLoading, setContactLoading] = useState(false);
   const [contactError, setContactError] = useState<string | null>(null);
   const [caseFilter, setCaseFilter] = useState<CaseFilter>("すべて");
-  const [expandedCase, setExpandedCase] = useState<string | null>(CASE_STUDIES[0]?.id ?? null);
+  const [expandedCase, setExpandedCase] = useState<string | null>(null);
   const [expandedService, setExpandedService] = useState<string | null>(null);
 
   const filteredCases =
