@@ -2,13 +2,15 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import HeroFixedBackground from "@/components/HeroFixedBackground";
+import { Reveal, SectionLabel } from "@/components/Reveal";
 import {
   CASE_FILTERS,
   CASE_STUDIES,
   FAQS,
   HERO,
-  NAV,
   PLANS,
   SERVICES,
   SITE,
@@ -16,107 +18,6 @@ import {
   PROCESS_INTRO,
   type CaseFilter,
 } from "@/lib/content";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 },
-};
-
-function Reveal({
-  children,
-  className = "",
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
-      variants={fadeUp}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function SectionLabel({ en, ja }: { en: string; ja: string }) {
-  return (
-    <div className="section-heading">
-      <span className="section-title-en">{en}</span>
-      <h2 className="section-title-ja">{ja}</h2>
-    </div>
-  );
-}
-
-function Header() {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <header className="fixed top-0 right-0 left-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-surface)]">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:h-[72px] lg:px-10">
-        <a href="#" className="font-display text-base font-bold text-[var(--color-charcoal)] sm:text-lg lg:text-xl">
-          {SITE.name}
-        </a>
-
-        <nav className="hidden items-center gap-7 lg:flex">
-          {NAV.map((item) => (
-            <a key={item.href} href={item.href} className="link-hover">
-              {item.label}
-            </a>
-          ))}
-          <a href="#contact" className="btn-primary text-sm">
-            {SITE.ctaContact}
-          </a>
-        </nav>
-
-        <button
-          type="button"
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label="メニュー"
-        >
-          <span
-            className={`h-px w-5 bg-[var(--color-charcoal)] transition ${open ? "translate-y-[3.5px] rotate-45" : ""}`}
-          />
-          <span className={`h-px w-5 bg-[var(--color-charcoal)] transition ${open ? "opacity-0" : ""}`} />
-          <span
-            className={`h-px w-5 bg-[var(--color-charcoal)] transition ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`}
-          />
-        </button>
-      </div>
-
-      {open && (
-        <motion.nav
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          className="border-t border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-6 lg:hidden"
-        >
-          <div className="flex flex-col gap-4">
-            {NAV.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="text-sm font-medium text-[var(--color-charcoal)]"
-              >
-                {item.label}
-              </a>
-            ))}
-            <a href="#contact" onClick={() => setOpen(false)} className="btn-primary w-fit text-sm">
-              {SITE.ctaContact}
-            </a>
-          </div>
-        </motion.nav>
-      )}
-    </header>
-  );
-}
 
 function Hero() {
   return (
@@ -772,34 +673,7 @@ export default function Site() {
         </section>
       </main>
 
-      <footer className="border-t border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-10 lg:px-10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="font-display font-bold text-[var(--color-charcoal)]">{SITE.name}</p>
-            <p className="mt-0.5 text-sm text-[color-mix(in_srgb,var(--color-charcoal)_55%,white)]">
-              {SITE.nameJa}
-            </p>
-            <p className="mt-1 text-sm text-[color-mix(in_srgb,var(--color-charcoal)_55%,white)]">
-              {SITE.tagline}
-            </p>
-            <p className="mt-2 text-xs text-[color-mix(in_srgb,var(--color-charcoal)_40%,white)]">
-              {SITE.owner}
-            </p>
-            <p className="mt-1 text-xs text-[color-mix(in_srgb,var(--color-charcoal)_40%,white)]">
-              <a href={`mailto:${SITE.email}`} className="hover:text-[var(--color-deep)]">
-                {SITE.email}
-              </a>
-              {" · "}
-              <a href={`tel:${SITE.phone}`} className="hover:text-[var(--color-deep)]">
-                {SITE.phoneDisplay}
-              </a>
-            </p>
-          </div>
-          <p className="text-xs text-[color-mix(in_srgb,var(--color-charcoal)_40%,white)]">
-            © {new Date().getFullYear()} {SITE.name}
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

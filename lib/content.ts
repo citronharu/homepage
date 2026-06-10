@@ -21,11 +21,12 @@ export const HERO = {
 } as const;
 
 export const NAV = [
-  { label: "サービス", href: "#services" },
-  { label: "事例", href: "#works" },
-  { label: "流れ", href: "#process" },
-  { label: "料金", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "サービス", href: "/#services" },
+  { label: "事例", href: "/#works" },
+  { label: "流れ", href: "/#process" },
+  { label: "料金", href: "/#pricing" },
+  { label: "代表", href: "/about" },
+  { label: "FAQ", href: "/#faq" },
 ] as const;
 
 export const SERVICES = [
