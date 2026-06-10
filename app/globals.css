@@ -104,25 +104,43 @@ body {
 }
 
 .hero-fixed-bg__pattern--a {
-  background-image: repeating-linear-gradient(
-    60deg,
-    transparent,
-    transparent 48px,
-    color-mix(in srgb, var(--color-sky) 15%, transparent) 48px,
-    color-mix(in srgb, var(--color-sky) 15%, transparent) 49px
-  );
-  animation: heroPatternDriftA 80s linear infinite;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 47px,
+      color-mix(in srgb, var(--color-sky) 15%, transparent) 47px,
+      color-mix(in srgb, var(--color-sky) 15%, transparent) 48px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 47px,
+      color-mix(in srgb, var(--color-sky) 15%, transparent) 47px,
+      color-mix(in srgb, var(--color-sky) 15%, transparent) 48px
+    );
+  background-size: 48px 48px;
+  animation: heroGridFlowLeftA 80s linear infinite;
 }
 
 .hero-fixed-bg__pattern--b {
-  background-image: repeating-linear-gradient(
-    -30deg,
-    transparent,
-    transparent 64px,
-    color-mix(in srgb, var(--color-deep) 8%, transparent) 64px,
-    color-mix(in srgb, var(--color-deep) 8%, transparent) 65px
-  );
-  animation: heroPatternDriftB 60s linear infinite;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 63px,
+      color-mix(in srgb, var(--color-deep) 8%, transparent) 63px,
+      color-mix(in srgb, var(--color-deep) 8%, transparent) 64px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 63px,
+      color-mix(in srgb, var(--color-deep) 8%, transparent) 63px,
+      color-mix(in srgb, var(--color-deep) 8%, transparent) 64px
+    );
+  background-size: 64px 64px;
+  animation: heroGridFlowLeftB 120s linear infinite;
 }
 
 .hero-fixed-bg__pattern--b::after {
@@ -130,34 +148,46 @@ body {
   position: absolute;
   inset: 0;
   background-image: repeating-linear-gradient(
-    120deg,
+    90deg,
     transparent,
-    transparent 96px,
-    color-mix(in srgb, var(--color-yellow) 5%, transparent) 96px,
-    color-mix(in srgb, var(--color-yellow) 5%, transparent) 97px
+    transparent 95px,
+    color-mix(in srgb, var(--color-yellow) 5%, transparent) 95px,
+    color-mix(in srgb, var(--color-yellow) 5%, transparent) 96px
   );
+  background-size: 96px 100%;
+  animation: heroGridFlowLeftAccent 100s linear infinite;
 }
 
-@keyframes heroPatternDriftA {
+@keyframes heroGridFlowLeftA {
   from {
-    transform: translate(0, 0) rotate(0deg);
+    background-position: 0 0;
   }
   to {
-    transform: translate(-40px, -24px) rotate(2deg);
+    background-position: -48px 0;
   }
 }
 
-@keyframes heroPatternDriftB {
+@keyframes heroGridFlowLeftB {
   from {
-    transform: translate(0, 0) rotate(0deg);
+    background-position: 0 0;
   }
   to {
-    transform: translate(32px, -20px) rotate(-1.5deg);
+    background-position: -64px 0;
+  }
+}
+
+@keyframes heroGridFlowLeftAccent {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -96px 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-fixed-bg__pattern {
+  .hero-fixed-bg__pattern,
+  .hero-fixed-bg__pattern::after {
     animation: none;
   }
 }
