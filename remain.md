@@ -19,7 +19,7 @@
 | **参考** | [GP Online](https://www.gpol.co.jp)（UI・配色・Hero のみ。構成は維持） / [LIG 記事](https://liginc.co.jp/web/useful/172778) |
 | **GitHub** | https://github.com/citronharu/homepage （`main` ブランチ） |
 | **デプロイ** | Vercel（Framework: Next.js） |
-| **最新コミット** | （push 後に更新） |
+| **最新コミット** | `6cc86e4` — カットイン文案・Hero改行と remain.md 更新 |
 
 ### 業務範囲
 
