@@ -409,6 +409,22 @@ export default function Site() {
                         {c.summary}
                       </p>
 
+                      <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                        {c.metrics.map((m) => (
+                          <div
+                            key={m.label}
+                            className="rounded-lg border border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-sky-pale)_70%,white)] px-4 py-3 text-center"
+                          >
+                            <p className="font-mono-accent text-xl font-bold text-[var(--color-deep)] sm:text-2xl">
+                              {m.value}
+                            </p>
+                            <p className="mt-1 text-[11px] leading-snug text-[color-mix(in_srgb,var(--color-charcoal)_65%,white)]">
+                              {m.label}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+
                       <ul className="mt-5 grid gap-2 sm:grid-cols-2">
                         {c.results.map((r) => (
                           <li
