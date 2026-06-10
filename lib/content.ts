@@ -46,9 +46,9 @@ export const SERVICES = [
   },
   {
     num: "04",
-    title: "保守・運用",
-    desc: "公開後の更新・軽微な改修・障害対応。小さな相談から継続的なパートナーとして対応。",
-    tags: ["更新", "監視", "改善"],
+    title: "既存ツール導入サポート",
+    desc: "ChatGPT・Claude・Notion・Slack など、業務に合った既存ツール（特に AI）の選定から導入・設定・社内定着までサポート。",
+    tags: ["AI導入", "ツール選定", "運用定着"],
   },
 ] as const;
 
