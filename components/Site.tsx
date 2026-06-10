@@ -159,6 +159,8 @@ function Hero() {
 export default function Site() {
   const [faqOpen, setFaqOpen] = useState<number | null>(0);
   const [submitted, setSubmitted] = useState(false);
+  const [contactLoading, setContactLoading] = useState(false);
+  const [contactError, setContactError] = useState<string | null>(null);
   const [caseFilter, setCaseFilter] = useState<CaseFilter>("すべて");
   const [expandedCase, setExpandedCase] = useState<string | null>(CASE_STUDIES[0]?.id ?? null);
   const [expandedService, setExpandedService] = useState<string | null>(null);
@@ -606,40 +608,101 @@ export default function Site() {
                   </div>
                 ) : (
                   <form
-                    onSubmit={(e) => {
+                    onSubmit={async (e) => {
                       e.preventDefault();
-                      setSubmitted(true);
+                      setContactError(null);
+                      setContactLoading(true);
+
+                      const form = e.currentTarget;
+                      const formData = new FormData(form);
+                      const name = String(formData.get("name") ?? "").trim();
+                      const email = String(formData.get("email") ?? "").trim();
+                      const message = String(formData.get("message") ?? "").trim();
+
+                      try {
+                        const response = await fetch("/api/contact", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ name, email, message }),
+                        });
+
+                        const data = (await response.json()) as {
+                          error?: string;
+                          code?: string;
+                        };
+
+                        if (response.status === 503 && data.code === "NOT_CONFIGURED") {
+                          const subject = encodeURIComponent(`【お問い合わせ】${name} 様`);
+                          const body = encodeURIComponent(
+                            `お名前: ${name}\nメール: ${email}\n\n${message}`,
+                          );
+                          window.location.href = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
+                          return;
+                        }
+
+                        if (!response.ok) {
+                          setContactError(data.error ?? "送信に失敗しました。");
+                          return;
+                        }
+
+                        setSubmitted(true);
+                        form.reset();
+                      } catch {
+                        setContactError("通信エラーが発生しました。時間をおいて再度お試しください。");
+                      } finally {
+                        setContactLoading(false);
+                      }
                     }}
                     className="card-gp space-y-4 p-8"
                   >
                     <div>
-                      <label className="mb-1.5 block text-xs font-medium text-brown">お名前</label>
-                      <input required className="input-field" placeholder="山田 太郎" />
+                      <label htmlFor="contact-name" className="mb-1.5 block text-xs font-medium text-brown">
+                        お名前
+                      </label>
+                      <input
+                        id="contact-name"
+                        name="name"
+                        required
+                        disabled={contactLoading}
+                        className="input-field"
+                        placeholder="山田 太郎"
+                      />
                     </div>
                     <div>
-                      <label className="mb-1.5 block text-xs font-medium text-brown">
+                      <label htmlFor="contact-email" className="mb-1.5 block text-xs font-medium text-brown">
                         メールアドレス
                       </label>
                       <input
+                        id="contact-email"
+                        name="email"
                         type="email"
                         required
+                        disabled={contactLoading}
                         className="input-field"
                         placeholder="example@email.com"
                       />
                     </div>
                     <div>
-                      <label className="mb-1.5 block text-xs font-medium text-brown">
+                      <label htmlFor="contact-message" className="mb-1.5 block text-xs font-medium text-brown">
                         お問い合わせ内容
                       </label>
                       <textarea
+                        id="contact-message"
+                        name="message"
                         required
                         rows={4}
+                        disabled={contactLoading}
                         className="input-field resize-none"
                         placeholder="ご要望やご質問をお書きください"
                       />
                     </div>
-                    <button type="submit" className="btn-primary w-full">
-                      送信する
+                    {contactError && (
+                      <p className="text-sm text-red-600" role="alert">
+                        {contactError}
+                      </p>
+                    )}
+                    <button type="submit" disabled={contactLoading} className="btn-primary w-full disabled:opacity-60">
+                      {contactLoading ? "送信中…" : "送信する"}
                     </button>
                   </form>
                 )}
