@@ -124,7 +124,7 @@ body {
       color-mix(in srgb, var(--color-sky) 15%, transparent) 48px
     );
   background-size: 48px 48px;
-  animation: heroGridFlowLeftA 80s linear infinite;
+  animation: heroGridFlowLeftA 10s linear infinite;
 }
 
 .hero-fixed-bg__pattern--b {
@@ -144,7 +144,7 @@ body {
       color-mix(in srgb, var(--color-deep) 8%, transparent) 64px
     );
   background-size: 64px 64px;
-  animation: heroGridFlowLeftB 120s linear infinite;
+  animation: heroGridFlowLeftB 15s linear infinite;
 }
 
 .hero-fixed-bg__pattern--b::after {
@@ -159,7 +159,7 @@ body {
     color-mix(in srgb, var(--color-yellow) 5%, transparent) 96px
   );
   background-size: 96px 100%;
-  animation: heroGridFlowLeftAccent 100s linear infinite;
+  animation: heroGridFlowLeftAccent 12s linear infinite;
 }
 
 @keyframes heroGridFlowLeftA {
