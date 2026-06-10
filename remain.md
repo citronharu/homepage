@@ -17,7 +17,7 @@
 | **参考** | [GP Online](https://www.gpol.co.jp)（UI・配色・Hero のみ。構成は維持） / [LIG 記事](https://liginc.co.jp/web/useful/172778) |
 | **GitHub** | https://github.com/citronharu/homepage （`main` ブランチ） |
 | **デプロイ** | Vercel（Framework: Next.js） |
-| **最新コミット** | GP Online 参考 UI 刷新（白基調・Hero 中央配置・日本語ナビ） |
+| **最新コミット** | `182dd3b` — GP Online 参考 UI 刷新（白基調・Hero 中央配置・日本語ナビ） |
 
 ### 業務範囲
 
