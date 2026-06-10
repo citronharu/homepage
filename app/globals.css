@@ -70,6 +70,12 @@ body {
   padding-bottom: clamp(4.5rem, 10vw, 7rem);
 }
 
+.hero-brand {
+  font-size: clamp(2.75rem, 10vw, 5.5rem);
+  line-height: 1.08;
+  letter-spacing: 0.02em;
+}
+
 .hero-bg {
   background: linear-gradient(
     165deg,

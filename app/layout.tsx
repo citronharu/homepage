@@ -24,9 +24,9 @@ const mPlus1Code = M_PLUS_1_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Ottorino（オットリーノ） | Webサイト・社内システムの設計・開発",
+  title: "Ottorino制作事務所 | Webサイト・社内システムの設計・開発",
   description:
-    "Ottorino（オットリーノ）は、Webサイト制作から社内システム開発まで。個人事業主としてヒアリングから公開・運用まで伴走します。",
+    "Ottorino制作事務所（オットリーノ）は、Webサイト制作から社内システム開発まで。代表・松尾春希がヒアリングから公開・運用まで伴走します。",
 };
 
 export default function RootLayout({

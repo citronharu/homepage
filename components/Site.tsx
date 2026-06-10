@@ -58,11 +58,8 @@ function Header() {
   return (
     <header className="fixed top-0 right-0 left-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-surface)]">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:h-[72px] lg:px-10">
-        <a href="#" className="font-display text-lg font-bold text-[var(--color-charcoal)] lg:text-xl">
+        <a href="#" className="font-display text-base font-bold text-[var(--color-charcoal)] sm:text-lg lg:text-xl">
           {SITE.name}
-          <span className="ml-1 font-normal text-[color-mix(in_srgb,var(--color-charcoal)_55%,white)]">
-            （{SITE.nameJa}）
-          </span>
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex">
@@ -127,15 +124,24 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-3xl"
+          className="w-full max-w-5xl"
         >
-          <h1 className="font-display text-[clamp(2.75rem,7.5vw,4.75rem)] font-bold leading-[1.15] tracking-tight text-[var(--color-charcoal)]">
-            {HERO.jp}
+          <p className="font-mono-accent text-xs tracking-[0.35em] text-[var(--color-deep)] uppercase sm:text-sm">
+            {SITE.nameShort}
+          </p>
+          <h1 className="hero-brand font-display mt-4 font-bold text-[var(--color-charcoal)]">
+            {SITE.name}
           </h1>
-          <p className="font-serif-accent mt-5 text-xl tracking-wider text-brown lg:text-2xl">
+          <p className="mt-3 text-lg font-medium text-[color-mix(in_srgb,var(--color-charcoal)_60%,white)] sm:text-xl">
+            {SITE.nameJa}
+          </p>
+          <h2 className="font-display mt-10 text-[clamp(1.5rem,4vw,2.25rem)] font-bold leading-snug tracking-tight text-[var(--color-charcoal)]">
+            {HERO.jp}
+          </h2>
+          <p className="font-serif-accent mt-4 text-lg tracking-wider text-brown lg:text-xl">
             {HERO.en}
           </p>
-          <p className="mt-8 max-w-[640px] text-base leading-[1.9] text-[color-mix(in_srgb,var(--color-charcoal)_72%,white)]">
+          <p className="mt-6 max-w-[640px] text-base leading-[1.9] text-[color-mix(in_srgb,var(--color-charcoal)_72%,white)]">
             {HERO.sub}
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
@@ -448,9 +454,7 @@ export default function Site() {
                 <dl className="mt-8 space-y-5 text-sm">
                   <div>
                     <dt className="section-title-en text-[10px]">Office</dt>
-                    <dd className="mt-1 font-medium text-[var(--color-charcoal)]">
-                      {SITE.name}（{SITE.nameJa}）
-                    </dd>
+                    <dd className="mt-1 font-medium text-[var(--color-charcoal)]">{SITE.name}</dd>
                   </div>
                   <div>
                     <dt className="section-title-en text-[10px]">Representative</dt>
@@ -540,8 +544,9 @@ export default function Site() {
       <footer className="border-t border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-10 lg:px-10">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="font-display font-bold text-[var(--color-charcoal)]">
-              {SITE.name}（{SITE.nameJa}）
+            <p className="font-display font-bold text-[var(--color-charcoal)]">{SITE.name}</p>
+            <p className="mt-0.5 text-sm text-[color-mix(in_srgb,var(--color-charcoal)_55%,white)]">
+              {SITE.nameJa}
             </p>
             <p className="mt-1 text-sm text-[color-mix(in_srgb,var(--color-charcoal)_55%,white)]">
               {SITE.tagline}
@@ -560,7 +565,7 @@ export default function Site() {
             </p>
           </div>
           <p className="text-xs text-[color-mix(in_srgb,var(--color-charcoal)_40%,white)]">
-            © {new Date().getFullYear()} {SITE.name}（{SITE.nameJa}）
+            © {new Date().getFullYear()} {SITE.name}
           </p>
         </div>
       </footer>

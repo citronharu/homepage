@@ -1,5 +1,6 @@
 export const SITE = {
-  name: "Ottorino",
+  name: "Ottorino制作事務所",
+  nameShort: "Ottorino",
   nameJa: "オットリーノ",
   tagline: "Webサイト・社内システムの設計・開発",
   representative: "松尾春希",
