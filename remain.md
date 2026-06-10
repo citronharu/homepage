@@ -18,7 +18,7 @@
 | **参考** | [GP Online](https://www.gpol.co.jp)（UI・配色・Hero のみ。構成は維持） / [LIG 記事](https://liginc.co.jp/web/useful/172778) |
 | **GitHub** | https://github.com/citronharu/homepage （`main` ブランチ） |
 | **デプロイ** | Vercel（Framework: Next.js） |
-| **最新コミット** | （push 後に更新） |
+| **最新コミット** | `0c3c092` — 拠点セクションの説明文を簡潔化 |
 
 ### 業務範囲
 
