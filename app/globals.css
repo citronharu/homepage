@@ -125,22 +125,34 @@ body {
       color-mix(in srgb, var(--color-sky) 15%, transparent) calc(var(--hero-grid-size) / 2)
     );
   background-size: var(--hero-grid-size) var(--hero-grid-size);
+  will-change: transform;
+  contain: paint;
   animation: heroGridFlow45 var(--hero-grid-period) linear infinite;
 }
 
 @keyframes heroGridFlow45 {
   from {
-    background-position: 0 0;
+    transform: translate(0, 0);
   }
   to {
-    background-position: calc(-1 * var(--hero-grid-size)) calc(-1 * var(--hero-grid-size));
+    transform: translate(calc(-1 * var(--hero-grid-size)), calc(-1 * var(--hero-grid-size)));
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-fixed-bg__pattern {
     animation: none;
+    will-change: auto;
   }
+}
+
+.process-step-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.process-step-header {
+  align-items: flex-start;
 }
 
 .service-detail-grid {

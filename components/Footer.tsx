@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SITE } from "@/lib/content";
 
 export default function Footer() {
@@ -16,12 +17,12 @@ export default function Footer() {
             {SITE.owner}
           </p>
           <p className="mt-2 text-xs">
-            <a
+            <Link
               href="/about"
               className="text-[color-mix(in_srgb,var(--color-charcoal)_55%,white)] hover:text-[var(--color-deep)]"
             >
               代表プロフィール
-            </a>
+            </Link>
           </p>
           <p className="mt-1 text-xs text-[color-mix(in_srgb,var(--color-charcoal)_40%,white)]">
             <a href={`mailto:${SITE.email}`} className="hover:text-[var(--color-deep)]">

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { Reveal, SectionLabel } from "@/components/Reveal";
@@ -117,9 +118,9 @@ export default function AboutPage() {
               <p className="mt-4 text-sm leading-[1.9] text-[color-mix(in_srgb,var(--color-charcoal)_72%,white)]">
                 {ABOUT_CONTACT}
               </p>
-              <a href="/#contact" className="btn-primary mt-8 inline-flex">
+              <Link href="/#contact" className="btn-primary mt-8 inline-flex">
                 お問い合わせはこちら
-              </a>
+              </Link>
             </Reveal>
           </div>
         </section>

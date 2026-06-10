@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useState } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -9,13 +10,17 @@ import { Reveal, SectionLabel } from "@/components/Reveal";
 import {
   CASE_FILTERS,
   CASE_STUDIES,
+  CONTACT_INTRO,
   FAQS,
   HERO,
+  LOCATION,
   PLANS,
   SERVICES,
   SITE,
   STEPS,
   PROCESS_INTRO,
+  VALUES,
+  WHY_OTTORINO,
   type CaseFilter,
 } from "@/lib/content";
 
@@ -78,6 +83,31 @@ export default function Site() {
       <Header />
       <main className="relative z-10">
         <Hero />
+
+        <section id="location" className="relative overflow-hidden">
+          <div className="absolute inset-0" aria-hidden>
+            <Image
+              src="/images/osaka-location.png"
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-[color-mix(in_srgb,var(--color-surface)_82%,transparent)]" />
+            <div className="absolute inset-0 bg-[color-mix(in_srgb,var(--color-sky-pale)_55%,transparent)]" />
+          </div>
+          <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 lg:px-10 lg:py-20">
+            <Reveal>
+              <SectionLabel en={LOCATION.en} ja={LOCATION.ja} />
+              <h2 className="font-display -mt-4 text-2xl font-bold text-[var(--color-charcoal)] sm:text-3xl">
+                {LOCATION.headline}
+              </h2>
+              <p className="mt-5 max-w-3xl text-sm leading-[1.9] text-[color-mix(in_srgb,var(--color-charcoal)_72%,white)]">
+                {LOCATION.body}
+              </p>
+            </Reveal>
+          </div>
+        </section>
 
         <section id="services" className="section-padding bg-[var(--color-surface)]">
           <div className="mx-auto max-w-6xl px-6 lg:px-10">
@@ -242,6 +272,28 @@ export default function Site() {
           </div>
         </section>
 
+        <section id="values" className="section-padding section-grid-bg">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <Reveal>
+              <SectionLabel en="Values" ja="大切にしていること" />
+            </Reveal>
+            <div className="grid gap-5 md:grid-cols-3">
+              {VALUES.map((value, i) => (
+                <Reveal key={value.title} delay={i * 0.06}>
+                  <article className="card-gp h-full p-8 lg:p-9">
+                    <h3 className="font-display text-lg font-bold text-[var(--color-charcoal)]">
+                      {value.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-[color-mix(in_srgb,var(--color-charcoal)_68%,white)]">
+                      {value.desc}
+                    </p>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="works" className="section-padding section-grid-bg">
           <div className="mx-auto max-w-6xl px-6 lg:px-10">
             <Reveal>
@@ -378,8 +430,81 @@ export default function Site() {
           </div>
         </section>
 
+        <section id="why" className="section-padding bg-[var(--color-surface)]">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <Reveal>
+              <SectionLabel en="Why Us" ja="Ottorinoが選ばれる理由" />
+              <p className="-mt-6 mb-8 max-w-2xl text-sm leading-relaxed text-[color-mix(in_srgb,var(--color-charcoal)_65%,white)]">
+                {WHY_OTTORINO.intro}
+              </p>
+            </Reveal>
+
+            <div className="hidden overflow-hidden rounded-xl border border-[var(--color-border)] md:block">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-sky-pale)_50%,white)]">
+                    <th className="px-5 py-4 font-display font-bold text-[var(--color-charcoal)]">項目</th>
+                    <th className="px-5 py-4 font-display font-bold text-[var(--color-charcoal)]">
+                      一般的な制作会社
+                    </th>
+                    <th className="bg-[color-mix(in_srgb,var(--color-yellow)_35%,white)] px-5 py-4 font-display font-bold text-[var(--color-charcoal)]">
+                      Ottorino
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {WHY_OTTORINO.rows.map((row, i) => (
+                    <tr
+                      key={row.topic}
+                      className={i < WHY_OTTORINO.rows.length - 1 ? "border-b border-[var(--color-border)]" : ""}
+                    >
+                      <th className="px-5 py-4 font-medium text-[var(--color-charcoal)]">{row.topic}</th>
+                      <td className="px-5 py-4 text-[color-mix(in_srgb,var(--color-charcoal)_68%,white)]">
+                        {row.general}
+                      </td>
+                      <td className="bg-[color-mix(in_srgb,var(--color-yellow)_18%,white)] px-5 py-4 font-medium text-[var(--color-charcoal)]">
+                        <span className="text-accent">✓ </span>
+                        {row.ottorino}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="space-y-4 md:hidden">
+              {WHY_OTTORINO.rows.map((row, i) => (
+                <Reveal key={row.topic} delay={i * 0.05}>
+                  <article className="card-gp overflow-hidden">
+                    <div className="border-b border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-sky-pale)_50%,white)] px-5 py-3">
+                      <h3 className="font-display text-sm font-bold text-[var(--color-charcoal)]">
+                        {row.topic}
+                      </h3>
+                    </div>
+                    <div className="grid gap-0 sm:grid-cols-2">
+                      <div className="border-b border-[var(--color-border)] p-5 sm:border-b-0 sm:border-r">
+                        <p className="section-title-en text-[10px]">一般的な制作会社</p>
+                        <p className="mt-2 text-sm text-[color-mix(in_srgb,var(--color-charcoal)_68%,white)]">
+                          {row.general}
+                        </p>
+                      </div>
+                      <div className="bg-[color-mix(in_srgb,var(--color-yellow)_18%,white)] p-5">
+                        <p className="section-title-en text-[10px]">Ottorino</p>
+                        <p className="mt-2 text-sm font-medium text-[var(--color-charcoal)]">
+                          <span className="text-accent">✓ </span>
+                          {row.ottorino}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="process" className="section-padding bg-process text-white">
-          <div className="mx-auto max-w-3xl px-6 lg:px-10">
+          <div className="mx-auto max-w-4xl px-6 lg:px-10">
             <Reveal>
               <div className="section-heading">
                 <span className="section-title-en text-[var(--color-yellow)]">Process</span>
@@ -390,29 +515,29 @@ export default function Site() {
             <div className="space-y-5">
               {STEPS.map((step, i) => (
                 <Reveal key={step.num} delay={i * 0.05}>
-                  <article className="rounded-xl border border-white/20 bg-[color-mix(in_srgb,var(--color-deep)_90%,black)] p-6 transition-colors hover:border-white/30 lg:p-8">
-                    <div className="flex flex-wrap items-start gap-4 sm:gap-6">
-                      <div className="shrink-0">
-                        <span className="font-mono-accent text-2xl font-bold text-[var(--color-yellow)]">
-                          {step.num}
-                        </span>
-                        <p className="mt-2 font-mono-accent text-[10px] tracking-wide text-white/45">
+                  <article className="process-step-card rounded-xl border border-white/20 bg-[color-mix(in_srgb,var(--color-deep)_90%,black)] p-6 transition-colors hover:border-white/30 lg:p-8">
+                    <div className="process-step-header flex items-start gap-4">
+                      <span className="font-mono-accent shrink-0 text-2xl font-bold text-[var(--color-yellow)]">
+                        {step.num}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="font-display text-lg font-bold">{step.title}</h3>
+                        <p className="mt-1 font-mono-accent text-[10px] tracking-wide text-white/45">
                           {step.duration}
                         </p>
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <h3 className="font-display text-lg font-bold">{step.title}</h3>
-                        <p className="mt-1 text-sm text-white/75">{step.desc}</p>
-                        <p className="mt-4 text-sm leading-[1.85] text-white/60">{step.body}</p>
-                        <ul className="mt-5 space-y-2 border-t border-white/10 pt-5">
-                          {step.items.map((item) => (
-                            <li key={item} className="flex gap-2.5 text-sm leading-relaxed text-white/70">
-                              <span className="shrink-0 text-[var(--color-yellow)]">✓</span>
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                    </div>
+                    <div className="mt-5 space-y-4 border-t border-white/10 pt-5">
+                      <p className="text-sm text-white/75">{step.desc}</p>
+                      <p className="text-sm leading-[1.85] text-white/60">{step.body}</p>
+                      <ul className="space-y-2 border-t border-white/10 pt-5">
+                        {step.items.map((item) => (
+                          <li key={item} className="flex gap-2.5 text-sm leading-relaxed text-white/70">
+                            <span className="shrink-0 text-[var(--color-yellow)]">✓</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </article>
                 </Reveal>
@@ -518,9 +643,7 @@ export default function Site() {
               <Reveal>
                 <SectionLabel en="Contact" ja="お問い合わせ" />
                 <p className="-mt-6 text-sm leading-relaxed text-[color-mix(in_srgb,var(--color-charcoal)_68%,white)]">
-                  ご質問・ご相談はお気軽にどうぞ。
-                  <br />
-                  2 営業日以内にご返信します。
+                  {CONTACT_INTRO}
                 </p>
                 <dl className="mt-8 space-y-5 text-sm">
                   <div>
